@@ -12,3 +12,11 @@
       out of scope for this build.
 - [ ] Annual maintenance: update the 2026 IRS/IRMAA/SSA figures each fall when new COLA figures
       are released (see AT&T guide's ANNUAL-TAX-FIGURES.md for the pattern to replicate here).
+- [ ] Confirm the RMSA reimbursement percentage (55% pre-Medicare / 30% Medicare) is still current
+      — the 2014 SPD only explicitly schedules this through 2018 and asserts (as a forward-looking
+      claim, not a guarantee) that it holds afterward. No public index exists to cross-check this
+      figure the way IRS limits can be, so it carries the highest staleness risk of any number in
+      either guide.
+- [ ] Same staleness caveat applies to the RMSA dollar formula itself ($5,000/yr, $1,000/yr past
+      15 YOS, $7,500 lump sum, 4.5% interest) — these are PG&E plan-design choices set by
+      amendment, not statute, so they could have changed since 2014 with no external signal.

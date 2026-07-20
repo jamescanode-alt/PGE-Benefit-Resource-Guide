@@ -47,3 +47,52 @@ vesting, match %, RMSA structure) are presented as documented in the 2014 SPD wi
 
 **Next steps.** Build `index.html` (Union) → `management.html` (Management/A&T, once the
 Management SPD extraction finishes) → preview both → push → CHANGE_LOG.
+
+## 2026-07-20 (2) — management.html built from direct SPD verification (background agent failed)
+
+**Task.** The background agent tasked with extracting Management SPD retirement details hit its
+session limit before finishing. Rather than wait, personally read the Management SPD's Final
+Average Pay Pension (pp.359-378), Cash Balance Pension (pp.381-395), Retirement Savings Plan
+(pp.403-418), and Retiree Medical/RMSA/Postretirement Life Insurance (pp.433-441) sections
+directly and built `management.html` from that primary-source reading.
+
+**Key differences from the Union guide, confirmed against the SPD (not assumed by analogy):**
+- Formula name and shape differ: "Final Average Pay Pension" (flat 1.7% × years × 36-month
+  average salary), not "Final Pay Pension" (1.5%/1.6% split formula on near-retirement pay).
+- Early-retirement reduction table has a **35-year full-exemption threshold** and an extra
+  "30-34 years" band, vs. the union table's 30-year threshold and 4 bands. Verified the two
+  tables share identical percentages in their overlapping columns (<15/15-24/25-29), only the
+  top band differs — confirmed by cross-checking the SPD's own worked example, which uses
+  identical numbers ($1,000 at 20 YOS) in both SPD books.
+- 401(k) contribution range is 1%-50% of pay (Management) vs. 1%-20% (Union) — verified directly
+  against both SPDs' "Enrolling in the Plan" sections after noticing the source docx's "1-20%"
+  claim needed independent confirmation.
+- 401(k) match structure is genuinely different in kind, not just rate: Management match is a
+  flat $0.75/$1 for both formulas (6% cap for Final Average Pay, 8% for Cash Balance); Union
+  match is 60 cents/$1 (Final Pay, 3%/6% cap by tenure) vs. $0.75/$1 (Cash Balance, 8% cap).
+- Cash Balance mechanics (points table, interest methodology, vesting) and RMSA mechanics
+  ($5,000/yr from 45, $1,000/yr past 15 YOS, $7,500 lump sum, 4.5% interest, spousal account)
+  are identical across both populations — confirmed by finding the *same* "Sam" cash-balance
+  example and "Joe & Jane" RMSA example, with matching dollar figures, in both SPD books.
+- Postretirement Life Insurance is materially richer for tenured Management retirees (salary-
+  linked, up to $50,000) vs. Union's flat $8,000 — added as its own callout in the RMSA section
+  rather than a full new numbered section, to keep scope from ballooning.
+
+**Files.** `management.html` (new, ~1050 lines), same design system as `index.html`. Wrapped all
+10 tables in `.table-wrap` from the start (learned from the mobile-overflow bug found and fixed
+in `index.html`) rather than discovering it again.
+
+**Tests.** Local preview: retirement estimator calculator tested for the default case, the
+30-34-year band (verifies Management's extra band produces a non-zero reduction where Union's
+would already show 0%), and the 35-year exemption. Mobile viewport (375px): confirmed the page
+itself has no real horizontal overflow (the table-wrap divs correctly scroll internally at
+520px content width inside a 327px container). Dropdown cross-navigation to/from index.html
+confirmed correct in both directions. Grepped the full repo for "farther" and "focus team"
+(case-insensitive): zero matches.
+
+**Risks.** Same 2014-SPD-vintage caveat as the Union guide. See TODO.md for the RMSA-specific
+staleness risk (flagged as highest of any figure in either guide, since it has no public index
+to cross-check against, unlike IRS/IRMAA figures).
+
+**Next steps.** Push `management.html` → update CHANGE_LOG → done unless the user wants a
+case-studies page or further population coverage.
