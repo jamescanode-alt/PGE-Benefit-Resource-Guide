@@ -1,5 +1,41 @@
 # CHANGE_LOG
 
+## 2026-07-20 (3) — Named client examples added throughout both guides
+
+**Summary.** Added a "Client example" callout to every substantive section of both guides (up
+from a handful of SPD-sourced "worked examples") using two running personas per guide, so a
+trainee can follow one consistent client's numbers through the whole document instead of seeing
+disconnected figures per section.
+
+- **index.html (Union):** Maria Delgado (hired 2008, Final Pay Pension) carries eligibility,
+  formula ID, FAP mechanics, early retirement, the calculator, payment options, 401(k) match,
+  RMSA, IRMAA, and a capstone strategy recap. Devon Park (hired 2016, Cash Balance) covers the
+  cash-balance-specific sections and a QDRO example.
+- **management.html:** Karen Whitfield (hired 2005, Final Average Pay) plays the same role,
+  including a dedicated example contrasting her 9%-reduced 32-year/age-58 benefit against what a
+  union employee with identical years would get (fully exempt at 30 years vs. Management's 35).
+  Priya Nair (hired 2017, Cash Balance) covers the cash-balance section, and a new unnamed
+  transfer example illustrates the union-to-Management blended-benefit rule in Section 13.
+
+**Files.** `index.html`, `management.html` (content only, no structural changes).
+
+**Tests.** Re-verified after edits: div/table/section tag counts balanced in both files (182/182,
+185/185 divs; 10/10 tables; 15/15 sections). Calculator re-tested with values matching the new
+examples (age 58/22yrs union &rarr; 14%; age 58/32yrs management &rarr; 9%) and produced results
+matching the prose exactly. No mobile overflow regression. Re-ran the farther/focus-team grep
+across both files: still zero matches.
+
+**Issues.** One internal-consistency fix made during review: the first draft of Karen's strategy-
+playbook recap implied a single continuous timeline (58 with more years than 65), which is
+impossible — retiring earlier means fewer accumulated years, not more. Reworded to frame the two
+early-retirement/normal-retirement figures as separate illustrative scenarios rather than
+sequential points in one client's life, consistent with how the SPD's own examples work.
+
+**Not yet done.** The user also asked whether the guide should be split into separate pages by
+hire date (pre/post-2013) with an intro selector page. Recommended against a full page split
+(would duplicate the ~90%-identical Cash Balance/RMSA content across twice as many pages) in favor
+of a lighter hero quick-start selector, pending user direction before building either.
+
 ## 2026-07-20 (2) — Management/A&T employee guide (management.html)
 
 **Summary.** Published `management.html`, the parallel guide for Management and Administrative
