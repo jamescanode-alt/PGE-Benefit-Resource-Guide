@@ -12,6 +12,12 @@
 - [ ] Union final-pay 401(k) match is shown as "60% / $0.60 per $1"; the 2026 401(k) page phrases
       it as "$0.60 per $1." Equivalent, but if a future update changes the rate, re-check both the
       match cards and the Maria client example.
+- [x] ~~Add an interactive advisor tool.~~ DONE 2026-07-21: added `triggers.html` (Financial
+      Trigger Finder), wired into both guides' nav. Computes retiree gate, pension reduction %,
+      Rule of 55, and a dated trigger timeline + separation checklist.
+- [ ] The Trigger Finder's early-retirement reduction % uses the birthday-age band (reduction as
+      of the last birthday); PG&E computes it by exact month. Fine for an educational estimate,
+      but note it if a client is mid-band and the exact figure matters, direct them to PensionConnect.
 - [ ] Add a case-studies/quiz page (parallel to the AT&T guide's case-studies.html) if wanted —
       out of scope for this build.
 - [ ] Annual maintenance: update the 2026 IRS/IRMAA/SSA figures each fall when new COLA figures

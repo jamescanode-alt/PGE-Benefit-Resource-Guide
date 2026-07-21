@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Trigger Finder · PG&E Advisor Field Guide</title>
+<style>
+:root{
+  --cream:#F7F4E9;
+  --cream-deep:#EFE9D6;
+  --ink:#10243F;
+  --ink-soft:#33486A;
+  --blue:#1E55C0;
+  --blue-bright:#2E84D6;
+  --sky:#cfe1f5;
+  --gold:#C08A2D;
+  --gold-soft:#E4C98A;
+  --line:#D8D0BA;
+  --paper:#FDFCF6;
+  --good:#2E7D52;
+  --warn:#B5532A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:Georgia,'Times New Roman',serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.sans{font-family:'Helvetica Neue',Arial,sans-serif}
+
+/* ---------- Layout shell ---------- */
+.wrap{display:flex;max-width:1400px;margin:0 auto;min-height:100vh}
+nav.side{
+  width:262px;flex:0 0 262px;
+  position:sticky;top:0;align-self:flex-start;
+  height:100vh;overflow-y:auto;
+  background:var(--ink);
+  color:var(--cream);
+  padding:30px 0 60px;
+}
+nav.side .brand{padding:0 26px 22px}
+nav.side .brand .logo{font-size:22px;font-weight:bold;letter-spacing:.5px;color:#fff;font-family:Georgia,serif;line-height:1.25}
+nav.side .brand .team{font-family:'Helvetica Neue',Arial,sans-serif;font-size:10.5px;letter-spacing:4px;color:var(--gold-soft);margin-top:3px}
+nav.side .brand .sub{font-size:12px;color:#9fb4d4;margin-top:14px;line-height:1.5;font-family:'Helvetica Neue',Arial,sans-serif}
+nav.side .planpick{margin-top:16px}
+nav.side .planpick .pp-k{display:block;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:#7d93b6;margin-bottom:5px;font-family:'Helvetica Neue',Arial,sans-serif}
+nav.side .planpick select{width:100%;padding:9px 30px 9px 11px;background-color:#163459;color:#fff;border:1px solid #24426b;border-radius:6px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:12.5px;letter-spacing:.3px;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M0 0l5 6 5-6z' fill='%23E4C98A'/></svg>");background-repeat:no-repeat;background-position:right 11px center}
+nav.side .planpick select:hover{border-color:var(--gold)}
+nav.side .planpick select:focus{outline:none;border-color:var(--gold)}
+nav.side .navlabel{font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:2.5px;color:#7d93b6;padding:18px 26px 8px;text-transform:uppercase}
+nav.side a{
+  display:block;padding:8px 26px 8px 26px;
+  color:#c6d4e8;text-decoration:none;font-size:14px;
+  font-family:'Helvetica Neue',Arial,sans-serif;
+  border-left:3px solid transparent;transition:.15s;
+}
+nav.side a .num{color:var(--gold-soft);font-size:11px;margin-right:9px;letter-spacing:1px}
+nav.side a:hover{background:#163459;color:#fff}
+nav.side a.active{background:#163459;color:#fff;border-left-color:var(--gold)}
+
+main{flex:1;min-width:0;padding:0 0 80px}
+section.block{padding:64px 56px;max-width:880px;border-bottom:1px solid var(--line)}
+@media(max-width:980px){
+  nav.side{display:none}
+  section.block{padding:44px 24px}
+}
+
+/* ---------- Typography ---------- */
+.eyebrow{font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px}
+h1{font-size:44px;line-height:1.1;font-weight:normal;letter-spacing:-.5px;margin-bottom:18px}
+h2{font-size:34px;line-height:1.12;font-weight:normal;letter-spacing:-.4px;margin-bottom:14px}
+h3{font-size:21px;font-weight:normal;margin:34px 0 12px;color:var(--ink)}
+h4{font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-soft);margin:26px 0 10px;font-weight:700}
+p{margin-bottom:14px;font-size:16.5px}
+p.lead{font-size:19px;color:var(--ink-soft);line-height:1.55}
+a.inline{color:var(--blue)}
+strong{font-weight:bold}
+em{color:var(--ink-soft)}
+.small{font-size:13.5px;color:var(--ink-soft);font-family:'Helvetica Neue',Arial,sans-serif}
+
+/* ---------- Hero ---------- */
+.hero{
+  background:linear-gradient(160deg,#10243F 0%,#16345b 60%,#1d4377 100%);
+  color:var(--cream);padding:74px 56px 64px;border-bottom:5px solid var(--gold);
+  position:relative;overflow:hidden;
+}
+.hero .eyebrow{color:var(--gold-soft)}
+.hero h1{color:#fff;max-width:680px}
+.hero p.lead{color:#cdddf2;max-width:640px}
+.hero .gear{position:absolute;right:-90px;top:-40px;width:380px;height:380px;border-radius:50%;
+  background:radial-gradient(circle at 40% 40%, rgba(46,132,214,.28), transparent 60%);pointer-events:none}
+.hero .meta{display:flex;gap:38px;margin-top:34px;flex-wrap:wrap;font-family:'Helvetica Neue',Arial,sans-serif}
+.hero .meta div span{display:block}
+.hero .meta .k{font-size:10.5px;letter-spacing:2px;color:#8fb0d6;text-transform:uppercase}
+.hero .meta .v{font-size:15px;color:#fff;margin-top:3px}
+
+/* ---------- Callouts ---------- */
+.callout{border-left:4px solid var(--blue);background:var(--paper);padding:18px 22px;margin:22px 0;border-radius:0 6px 6px 0}
+.callout.gold{border-left-color:var(--gold);background:#fbf6ea}
+.callout.warn{border-left-color:var(--warn);background:#fbf0ea}
+.callout.good{border-left-color:var(--good);background:#eef6f1}
+.callout .tag{font-family:'Helvetica Neue',Arial,sans-serif;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:6px;display:block}
+.callout.gold .tag{color:var(--gold)}
+.callout .tag.blue{color:var(--blue)}
+.callout.warn .tag{color:var(--warn)}
+.callout.good .tag{color:var(--good)}
+.callout p:last-child{margin-bottom:0}
+.callout p{font-size:15.5px}
+
+/* advisor lens recurring box */
+.lens{background:#10243F;color:#e7eefa;border-radius:8px;padding:22px 24px;margin:26px 0;position:relative;overflow:hidden}
+.lens .tag{font-family:'Helvetica Neue',Arial,sans-serif;font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-soft);font-weight:700;display:block;margin-bottom:8px}
+.lens p{color:#dbe5f5;font-size:15.5px}
+.lens p:last-child{margin-bottom:0}
+.lens strong{color:#fff}
+
+/* ---------- Tables ---------- */
+.table-wrap{overflow-x:auto;margin:20px 0;-webkit-overflow-scrolling:touch}
+table{width:100%;min-width:560px;border-collapse:collapse;margin:0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14.5px;background:var(--paper)}
+th{background:var(--ink);color:#fff;text-align:left;padding:11px 14px;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;font-weight:600}
+td{padding:11px 14px;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:#fbf9f1}
+td.num{font-variant-numeric:tabular-nums;text-align:right}
+
+/* ---------- Calculator ---------- */
+.calc{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:26px;margin:26px 0;box-shadow:0 2px 14px rgba(16,36,63,.06)}
+.calc .row{display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap;font-family:'Helvetica Neue',Arial,sans-serif}
+.calc label{flex:0 0 200px;font-size:13.5px;color:var(--ink-soft)}
+.calc select{flex:1;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;background:#fff}
+.calc input[type=date]{flex:1;min-width:150px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;background:#fff;color:var(--ink)}
+.calc .orlab{flex:0 0 auto;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-soft)}
+.calc .num-input{flex:0 0 96px}
+.calc .num-input input{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;text-align:right}
+.calc .radiogrp{display:flex;gap:20px;flex-wrap:wrap;flex:1}
+.calc .radiogrp label{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;font-size:14px;color:var(--ink);font-weight:400;cursor:pointer}
+.calc .radiogrp input[type=radio]{accent-color:var(--blue);cursor:pointer}
+.calc .row.hidden{display:none}
+.calc .note{font-size:12.5px;color:var(--ink-soft);font-family:'Helvetica Neue',Arial,sans-serif;margin-top:14px;line-height:1.5}
+@media(max-width:560px){
+  .calc .row{gap:8px}
+  .calc label{flex:0 0 100%}
+  .calc select,.calc input[type=date],.calc .radiogrp{flex:1 1 100%;min-width:0}
+  .calc .num-input{flex:0 0 120px}
+}
+
+.results{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px}
+@media(max-width:680px){.results{grid-template-columns:1fr}}
+.rcard{border-radius:10px;padding:18px;border:1px solid var(--line);background:var(--cream);display:flex;flex-direction:column;min-height:140px}
+.rcard .rlabel{font-family:'Helvetica Neue',Arial,sans-serif;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+.rcard .rval{font-size:26px;color:var(--ink);margin:8px 0 6px;line-height:1.1}
+.rcard .rdesc{font-family:'Helvetica Neue',Arial,sans-serif;font-size:12.5px;color:var(--ink-soft);line-height:1.45;margin-top:auto}
+.rcard.good{background:#eef6f1;border-color:#bcd9c8}
+.rcard.good .rval{color:var(--good)}
+.rcard.warn{background:#fbf0ea;border-color:#e6c3b2}
+.rcard.warn .rval{color:var(--warn)}
+.rcard.neutral{background:#eef3fb;border-color:#c4d6ef}
+.rcard.neutral .rval{color:var(--blue)}
+.status-banner{margin-top:18px;padding:14px 18px;border-radius:8px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14.5px;font-weight:600}
+.status-banner.met{background:#10243F;color:#fff}
+.status-banner.met .sb-sub{color:#9fb4d4;font-weight:400;font-size:13px;margin-top:4px;display:block}
+.status-banner.notmet{background:#fbf0ea;color:var(--warn);border:1px solid #e6c3b2}
+.status-banner.notmet .sb-sub{color:#8a4a2e;font-weight:400;font-size:13px;margin-top:4px;display:block}
+
+/* ---------- Timeline ---------- */
+.tl{position:relative;margin:28px 0 6px;padding-left:30px}
+.tl::before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tli{position:relative;margin-bottom:14px}
+.tli::before{content:"";position:absolute;left:-28px;top:17px;width:11px;height:11px;border-radius:50%;background:var(--paper);border:3px solid var(--blue)}
+.tli.past::before{border-color:#b9b2a0;background:var(--cream-deep)}
+.tli.next::before{border-color:var(--gold);background:#fff}
+.tli.warnitem::before{border-color:var(--warn)}
+.tlcard{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+.tli.past .tlcard{opacity:.6}
+.tli.next .tlcard{border-color:var(--gold);box-shadow:0 2px 14px rgba(192,138,45,.16)}
+.tli.warnitem .tlcard{border-left:4px solid var(--warn);background:#fbf0ea}
+.tlhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:'Helvetica Neue',Arial,sans-serif}
+.tld{font-weight:700;font-size:13.5px;color:var(--ink);letter-spacing:.3px;font-variant-numeric:tabular-nums}
+.tla{font-size:12px;color:var(--ink-soft)}
+.tlt{font-size:17px;font-family:Georgia,serif;margin:6px 0 4px;color:var(--ink)}
+.tldesc{font-size:13px;color:var(--ink-soft);font-family:'Helvetica Neue',Arial,sans-serif;line-height:1.5}
+.tldesc strong{color:var(--ink)}
+.nextchip{background:var(--gold);color:#fff;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;padding:2px 8px;border-radius:20px;font-family:'Helvetica Neue',Arial,sans-serif}
+.passchip{background:var(--cream-deep);color:var(--ink-soft);font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;padding:2px 8px;border-radius:20px;font-family:'Helvetica Neue',Arial,sans-serif}
+.cat{font-family:'Helvetica Neue',Arial,sans-serif;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;padding:2px 9px;border-radius:20px;display:inline-block}
+.cat.pension{background:#e3ecfa;color:var(--blue)}
+.cat.k401{background:#f6ecd6;color:#8a6116}
+.cat.ss{background:#e7f2ec;color:var(--good)}
+.cat.medicare{background:#fbe9e2;color:var(--warn)}
+.cat.tax{background:var(--cream-deep);color:var(--ink-soft)}
+.cat.hc{background:#fbf6ea;color:var(--gold)}
+.cat.emp{background:#10243F;color:#fff}
+
+/* steps */
+.steps{counter-reset:s;margin:22px 0}
+.step{display:flex;gap:16px;margin-bottom:16px;align-items:flex-start}
+.step .sn{counter-increment:s;flex:0 0 34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:15px}
+.step .sn::before{content:counter(s)}
+.step .sc{flex:1;padding-top:3px}
+.step .sc strong{display:block;margin-bottom:2px}
+.step .sc p{font-size:14.5px;margin:0;color:var(--ink-soft)}
+.step.flag .sn{background:var(--warn)}
+.step.ok .sn{background:var(--good)}
+
+/* footer */
+.foot{padding:48px 56px;background:var(--ink);color:#c6d4e8;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;line-height:1.7}
+.foot .ftitle{color:#fff;font-size:15px;letter-spacing:1px;margin-bottom:8px;font-weight:600}
+.foot a{color:var(--gold-soft)}
+.foot .disc{margin-top:22px;font-size:11.5px;color:#7d93b6;border-top:1px solid #24426b;padding-top:18px}
+
+.pn{font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="side">
+  <div class="brand">
+    <div class="logo">PG&amp;E Retirement Benefits</div>
+    <div class="team">ADVISOR FIELD GUIDE</div>
+    <div class="sub">Financial Trigger Finder</div>
+    <div class="planpick">
+      <div class="pp-k">Viewing</div>
+      <select id="planSel" aria-label="Choose page" onchange="if(this.value)window.location.href=this.value;">
+        <option value="triggers.html" selected>Tools &middot; Trigger Finder</option>
+        <option value="index.html">Union-Represented</option>
+        <option value="management.html">Management &amp; Admin/Technical</option>
+      </select>
+    </div>
+  </div>
+  <div class="navlabel">The Tool</div>
+  <a href="#inputs" class="navitem"><span class="num">01</span>Client inputs</a>
+  <a href="#timeline" class="navitem"><span class="num">02</span>Trigger timeline</a>
+  <a href="#separation" class="navitem"><span class="num">03</span>Separation checklist</a>
+  <div class="navlabel">Reference</div>
+  <a href="#reference" class="navitem"><span class="num">04</span>Age-trigger reference</a>
+  <div class="navlabel">Plan Guides</div>
+  <a href="index.html"><span class="num">&#9656;</span>Union-Represented</a>
+  <a href="management.html"><span class="num">&#9656;</span>Management &amp; A&amp;T</a>
+</nav>
+
+<main>
+
+<div class="hero" id="start">
+  <div class="gear"></div>
+  <div class="eyebrow">Advisor Toolkit &middot; Interactive</div>
+  <h1>Financial Trigger Finder</h1>
+  <p class="lead">Enter a client's date of birth, hire date, planned (or actual) separation date, employee group, and pension formula, and get the dated list of financial triggers to review together: the RMSA credit-start ages, vesting, catch-up contributions, the age-55 retiree gate, the unreduced-pension service milestone, the Rule of 55, 59&frac12;, Social Security windows, the IRMAA lookback, Medicare enrollment, QCDs, and RMDs.</p>
+  <div class="meta">
+    <div><span class="k">Covers</span><span class="v">Union-Represented &middot; Management &amp; A&amp;T</span></div>
+    <div><span class="k">Indexed figures</span><span class="v">2026 tax year</span></div>
+    <div><span class="k">Data</span><span class="v">Runs in the browser. Nothing is stored or sent</span></div>
+  </div>
+</div>
+
+<section class="block" id="inputs">
+  <div class="pn">Section 01 &middot; Interactive</div>
+  <h2>Client inputs</h2>
+  <p>Start with the employee group, pension formula, and employment status, then choose whether to enter exact dates or age / years of service, whichever the advisor has on hand. Either way the tool computes the same trigger dates (age- and service-based entries just read as "on or about").</p>
+
+  <div class="calc">
+    <div class="row">
+      <label for="grp">Employee group</label>
+      <select id="grp" aria-label="Employee group">
+        <option value="union" selected>Union-Represented (IBEW / ESC / SEIU 383)</option>
+        <option value="mgmt">Management &amp; Administrative/Technical</option>
+      </select>
+    </div>
+    <div class="row">
+      <label for="formula">Pension formula</label>
+      <select id="formula" aria-label="Pension formula">
+        <option value="fp" selected>Final Pay / Final Average Pay (hired before 2013)</option>
+        <option value="cb">Cash Balance (hired 2013+ or elected in 2013)</option>
+      </select>
+    </div>
+    <div class="row">
+      <label>Employment status</label>
+      <div class="radiogrp" role="radiogroup" aria-label="Employment status">
+        <label class="radio-opt"><input type="radio" name="empStatus" value="active" checked> Actively employed</label>
+        <label class="radio-opt"><input type="radio" name="empStatus" value="terminated"> Terminated</label>
+      </div>
+    </div>
+    <div class="row">
+      <label>Enter using</label>
+      <div class="radiogrp" role="radiogroup" aria-label="Date entry mode">
+        <label class="radio-opt"><input type="radio" name="entryMode" value="ages" checked> Ages / years</label>
+        <label class="radio-opt"><input type="radio" name="entryMode" value="dates"> Specific dates</label>
+      </div>
+    </div>
+
+    <div class="row" id="dobDateRow">
+      <label for="dob">Date of birth</label>
+      <input type="date" id="dob">
+    </div>
+    <div class="row" id="dobAgeRow">
+      <label for="ageNum">Age (whole years)</label>
+      <span class="num-input"><input type="number" id="ageNum" min="18" max="95" step="1" value="54" aria-label="Age in years"></span>
+    </div>
+
+    <div class="row" id="hireDateRow">
+      <label for="hire">Date of hire</label>
+      <input type="date" id="hire">
+    </div>
+    <div class="row" id="hireYosRow">
+      <label for="yosNum">Years of credited service</label>
+      <span class="num-input"><input type="number" id="yosNum" min="0" max="50" step="1" value="27" aria-label="Years of service"></span>
+    </div>
+
+    <div class="row">
+      <label for="sep" id="sepLabel">Planned Date of Separation <em style="font-style:normal;color:#8a97ad" id="sepHelp">(optional, leave blank if not yet decided)</em></label>
+      <input type="date" id="sep">
+    </div>
+
+    <div id="statusBanner"></div>
+    <div class="results" id="resCards"></div>
+    <div class="note" id="calcNote"></div>
+  </div>
+
+  <div class="callout warn">
+    <span class="tag">Read this before relying on the output</span>
+    <p>This tool maps <strong>generic, dated planning triggers</strong> from statutory rules and the SPD-verified rules in the two plan guides. It assumes continuous service from hire to separation, uses exact dates where the plans count completed whole years, and cannot see breaks in service, rehires, disability provisions, the 2013 pension-choice election, or a client's actual pay. Indexed dollar figures are <strong>2026 tax-year</strong> values. <strong>Always confirm a client's actual status at PG&amp;E PensionConnect (mypensionconnect.com), Fidelity NetBenefits, the controlling SPD, and ssa.gov / medicare.gov before advising.</strong></p>
+  </div>
+</section>
+
+<section class="block" id="timeline">
+  <div class="pn">Section 02 &middot; Output</div>
+  <h2>Trigger timeline</h2>
+  <p>Every dated trigger for this client, in order. Faded items have passed (still worth confirming they were handled); the gold item is the next one coming. Items flagged in red need attention <em>before</em> the separation date.</p>
+  <div class="tl" id="tlWrap"></div>
+  <p class="small" id="tlNote"></p>
+</section>
+
+<section class="block" id="separation">
+  <div class="pn">Section 03 &middot; Output</div>
+  <h2>Separation checklist</h2>
+  <p id="sepIntro">What the separation date itself triggers: the items to walk through when the client knows (or is choosing) their last day on employee payroll.</p>
+  <div class="steps" id="sepWrap"></div>
+  <div class="lens">
+    <span class="tag">The advisor's lens</span>
+    <p>The separation date is the <strong>most controllable variable</strong> on this page. A client who leaves <strong>before age 55</strong> forfeits the RMSA and retiree medical entirely, even with a fully vested pension. A Final Pay / Final Average Pay client a few years short of the <strong>unreduced-pension milestone</strong> (30 years union / 35 management) is locking in a permanent monthly reduction. And a rollover before the Rule-of-55 year can cost penalty-free 401(k) access. Map the date against the timeline above <em>before</em> the client gives notice.</p>
+  </div>
+</section>
+
+<section class="block" id="reference">
+  <div class="pn">Section 04 &middot; Reference</div>
+  <h2>Age-trigger reference</h2>
+  <p>The full trigger map behind the timeline. Statutory ages don't change yearly; the dollar figures are <strong>2026</strong> values, verify current-year figures before advising.</p>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Age / event</th><th>Trigger</th><th>What to review</th></tr></thead>
+    <tbody>
+      <tr><td><strong>45</strong></td><td>RMSA credits begin</td><td>PG&amp;E starts crediting the Retiree Medical Savings Account $5,000/yr the year the client turns 45. A spouse or registered domestic partner gets a parallel account. Employee-only bonuses ($1,000/yr past 15 yrs, up to $7,500 lump sum) are added at retirement.</td></tr>
+      <tr><td><strong>46</strong></td><td>RMSA interest begins</td><td>The account starts earning 4.5% annual compounding interest. The longer a client works past 46, the larger the medical-premium subsidy at retirement.</td></tr>
+      <tr><td><strong>3 / 5 yrs service</strong></td><td>Vesting</td><td>Cash Balance vests at <strong>3 years</strong>; Final Pay / Final Average Pay at <strong>5 years</strong> (or age 55 while employed). Separating unvested forfeits the pension.</td></tr>
+      <tr><td><strong>50</strong></td><td>Catch-up contributions</td><td>+$8,000 (2026) on top of the $24,500 402(g) limit, from the calendar year they turn 50. From 2026, clients who earned $150,000+ in the prior year must make catch-ups as Roth (now supported, see below).</td></tr>
+      <tr><td><strong>30 yrs (union) / 35 yrs (mgmt)</strong></td><td>Unreduced Final Pay / Final Average Pay pension</td><td>With this much credited service, the pension is fully unreduced at any retirement age 55&ndash;65. Below it, retiring before 65 applies the early-reduction table. Cash Balance has no reduction, so this milestone doesn't apply.</td></tr>
+      <tr><td><strong>55</strong></td><td>Retiree gate &middot; Rule of 55 &middot; earliest pension</td><td>Ending employment at 55+ makes the client a <strong>PG&amp;E retiree</strong>, the gate to RMSA and retiree medical (plus 10 yrs of Credited Service if hired on/after 1/1/2004). Also unlocks penalty-free 401(k) withdrawals (Rule of 55, forfeited by an IRA rollover) and the earliest Final Pay / Final Average Pay commencement.</td></tr>
+      <tr><td><strong>59&frac12;</strong></td><td>Penalty ends everywhere</td><td>The 10% early-withdrawal penalty ends for 401(k)s and IRAs regardless of employment status.</td></tr>
+      <tr><td><strong>60&ndash;63</strong></td><td>Super catch-up</td><td>$11,250 (2026) replaces the standard catch-up for the calendar years the client turns 60 through 63; reverts at 64.</td></tr>
+      <tr><td><strong>62</strong></td><td>Social Security earliest claim</td><td>Permanently reduced (~30% below an FRA-67 benefit); earnings test applies if still working. <a class="inline" href="https://www.ssa.gov/benefits/retirement/planner/agereduction.html" target="_blank" rel="noopener">ssa.gov</a></td></tr>
+      <tr><td><strong>63</strong></td><td>IRMAA lookback begins</td><td>Medicare premiums at 65 are set by MAGI from two years prior, so the year they turn 63 is the first year Roth conversions and gains can raise their first Medicare premiums. 2026 tiers start above $109,000 single / $218,000 MFJ. <a class="inline" href="https://www.medicare.gov/basics/costs/medicare-costs" target="_blank" rel="noopener">medicare.gov</a></td></tr>
+      <tr><td><strong>64&frac34;</strong></td><td>Medicare Initial Enrollment Period</td><td>7-month window opens 3 months before the 65th-birthday month. Missing it (without active employer coverage) means lifetime Part B penalties.</td></tr>
+      <tr><td><strong>65</strong></td><td>Medicare &middot; normal retirement &middot; RMSA shift</td><td>Unreduced pension at 65 regardless of service. Medicare begins; the pre-65 bridge (retiree medical or COBRA) hands off. The RMSA subsidy shifts from <strong>55% of premium (pre-Medicare) to 30% (Medicare)</strong>. COBRA does <em>not</em> count as employer coverage for delaying Part B.</td></tr>
+      <tr><td><strong>FRA 66&ndash;67</strong></td><td>Social Security Full Retirement Age</td><td>By birth year: 1954 or earlier 66; 1955&ndash;59 66 + 2 mo/yr; 1960+ 67. Unreduced benefit; earnings test ends. <a class="inline" href="https://www.ssa.gov/benefits/retirement/planner/agereduction.html" target="_blank" rel="noopener">ssa.gov</a></td></tr>
+      <tr><td><strong>70</strong></td><td>Delayed credits max out</td><td>~8%/yr delayed-retirement credits stop at 70. No benefit to waiting longer to claim Social Security.</td></tr>
+      <tr><td><strong>70&frac12;</strong></td><td>QCDs available</td><td>Qualified Charitable Distributions direct from IRAs (annual limit indexed); excluded from MAGI and count toward RMDs once those begin. <a class="inline" href="https://www.irs.gov/retirement-plans/retirement-plans-faqs-regarding-iras-distributions-withdrawals" target="_blank" rel="noopener">irs.gov</a></td></tr>
+      <tr><td><strong>73 / 75</strong></td><td>RMDs begin</td><td>Born 1951&ndash;1959: age 73. Born 1960 or later: age 75 (SECURE 2.0). First RMD may be delayed to April 1 of the following year (doubling two into one tax year). Roth IRAs and Roth 401(k)s are exempt. <a class="inline" href="https://www.irs.gov/retirement-plans/retirement-plan-and-ira-required-minimum-distributions-faqs" target="_blank" rel="noopener">irs.gov</a></td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>Plan-rule notes (not age-based)</h4>
+  <ul style="margin:0 0 14px 20px;font-size:15px;font-family:'Helvetica Neue',Arial,sans-serif;color:var(--ink-soft);line-height:1.6">
+    <li><strong>Roth 401(k) source, effective Jan 1, 2026:</strong> the RSP now offers a Roth contribution option (in addition to pre-tax and regular after-tax). This is also what lets $150k+ earners comply with the mandatory-Roth catch-up rule.</li>
+    <li><strong>Pension cash-out:</strong> a pension present value of <strong>$5,000 or less</strong> is paid as a lump sum regardless of formula (auto-rolled to an IRA if over $1,000, cashed out if $1,000 or less) unless the client acts within 60 days.</li>
+    <li><strong>Excess Plan (high earners):</strong> pension amounts above the IRS &sect;415 / &sect;401(a)(17) limits ($360,000 of pay counted in 2026) are paid through a separate non-qualified, unsecured, not-PBGC-insured Excess Plan, as a lump sum at retirement. Most common for Management/A&amp;T.</li>
+  </ul>
+  <p class="small">Born-1959 note: SECURE 2.0's text created ambiguity for 1959 births (73 vs 75); IRS proposed regulations resolve it to <strong>73</strong>. Confirm final regs before relying on it for a 1959-born client. Group- and formula-specific pension rules (reduction tables, RMSA mechanics, match rates) live in the two plan guides in the sidebar.</p>
+</section>
+
+<div class="foot">
+  <div class="ftitle">PG&amp;E Retirement Benefits &middot; Advisor Field Guide (Financial Trigger Finder)</div>
+  <div>Built as an internal advisor tool. Pair the output with the client's PG&amp;E PensionConnect and Fidelity NetBenefits statements, the controlling SPD, and current ssa.gov / medicare.gov / irs.gov figures before advising. Use the <strong>Viewing</strong> selector at the top of the sidebar to open the full plan guides.</div>
+  <div class="disc">
+    This material is for educational and training use by wealth advisors. It is a simplified summary of complex statutory and plan provisions and is not legal, tax, or investment advice, nor a guarantee of any benefit. Plan terms are governed solely by the official plan documents and Summary Plan Descriptions, which control in any conflict. Statutory thresholds, indexed dollar limits, and plan provisions change over time. Always verify a client's actual figures at PG&amp;E PensionConnect, Fidelity NetBenefits, the current SPD, and the cited government sources before making recommendations. Tool output is an illustrative approximation only.
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+// ---- nav active state ----
+const links=[...document.querySelectorAll('nav.side a.navitem')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+const obs=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      const id='#'+e.target.id;
+      links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===id));
+    }
+  });
+},{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(s=>s&&obs.observe(s));
+
+// ---- Financial trigger engine (PG&E) ----
+(function(){
+  const $=id=>document.getElementById(id);
+  const dobEl=$('dob'), ageEl=$('ageNum'), hireEl=$('hire'), yosEl=$('yosNum'), sepEl=$('sep'), grpEl=$('grp'), formulaEl=$('formula');
+  const banner=$('statusBanner'), cards=$('resCards'), note=$('calcNote');
+  const tlWrap=$('tlWrap'), tlNote=$('tlNote'), sepWrap=$('sepWrap'), sepIntro=$('sepIntro');
+  const empRadios=[...document.querySelectorAll('input[name="empStatus"]')];
+  const modeRadios=[...document.querySelectorAll('input[name="entryMode"]')];
+  const sepLabel=$('sepLabel'), sepHelp=$('sepHelp');
+  const dobDateRow=$('dobDateRow'), dobAgeRow=$('dobAgeRow'), hireDateRow=$('hireDateRow'), hireYosRow=$('hireYosRow');
+
+  function empStatus(){ const r=empRadios.find(r=>r.checked); return r?r.value:'active'; }
+  function entryMode(){ const r=modeRadios.find(r=>r.checked); return r?r.value:'ages'; }
+
+  function syncModeVisibility(){
+    const mode=entryMode();
+    dobDateRow.classList.toggle('hidden', mode!=='dates');
+    dobAgeRow.classList.toggle('hidden', mode!=='ages');
+    hireDateRow.classList.toggle('hidden', mode!=='dates');
+    hireYosRow.classList.toggle('hidden', mode!=='ages');
+  }
+  function syncSepLabel(){
+    const active=empStatus()==='active';
+    sepLabel.firstChild.textContent = active ? 'Planned Date of Separation ' : 'Date of Separation ';
+    sepHelp.textContent = active ? '(optional, leave blank if not yet decided)' : '(leave blank if unknown)';
+  }
+
+  const MS_YR=365.25*24*3600*1000;
+  const GRP_NAME={union:'Union-Represented', mgmt:'Management & A&T'};
+  const fmt=d=>d.toLocaleDateString('en-US',{month:'short',year:'numeric'});
+  const fmtFull=d=>d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  function parseD(v){ if(!v) return null; const p=v.split('-'); const d=new Date(+p[0],+p[1]-1,+p[2]); return isNaN(d)?null:d; }
+  function addY(d,y){ const n=new Date(d); const w=Math.trunc(y); n.setFullYear(n.getFullYear()+w); const m=Math.round((y-w)*12); if(m) n.setMonth(n.getMonth()+m); return n; }
+  function addM(d,m){ const n=new Date(d); n.setMonth(n.getMonth()+m); return n; }
+  function yrs(a,b){ return (b-a)/MS_YR; }
+  function monthsBetween(a,b){ return Math.round(yrs(a,b)*12); }
+  // completed whole calendar years between two dates (what the plans count), immune to the
+  // 365.25-day round-trip drift when an age is entered and converted to a date and back.
+  function wholeYears(a,b){ if(!a||!b) return null; let y=b.getFullYear()-a.getFullYear(); const m=b.getMonth()-a.getMonth(); if(m<0||(m===0&&b.getDate()<a.getDate())) y--; return y; }
+
+  function fraFor(by){
+    if(by<=1954) return {m:66*12, label:'66'};
+    if(by>=1960) return {m:67*12, label:'67'};
+    const x=(by-1954)*2; return {m:66*12+x, label:'66 + '+x+' mo'};
+  }
+  function rmdFor(by){
+    if(by<=1950) return {age:72, label:'72', legacy:true};
+    if(by<=1959) return {age:73, label:'73', note:(by===1959)};
+    return {age:75, label:'75'};
+  }
+
+  // Early-retirement reduction tables (age 55-64 -> reduction % by service band).
+  // Union bands: [<15, 15-24, 25-29, 30+]. Management bands: [<15, 15-24, 25-29, 30-34, 35+].
+  const UNION_RED={64:[3,0,0,0],63:[6,0,0,0],62:[9,0,0,0],61:[12,3,3,0],60:[15,6,6,0],59:[18,10,9,0],58:[21,14,12,0],57:[24,18,15,0],56:[27,22,18,0],55:[30,26,21,0]};
+  const MGMT_RED={64:[3,0,0,0,0],63:[6,0,0,0,0],62:[9,0,0,0,0],61:[12,3,3,0,0],60:[15,6,6,0,0],59:[18,10,9,6,0],58:[21,14,12,9,0],57:[24,18,15,12,0],56:[27,22,18,15,0],55:[30,26,21,18,0]};
+  function unreducedYrs(grp){ return grp==='mgmt'?35:30; }
+  function bandIdxUnion(svc){ if(svc>=30)return 3; if(svc>=25)return 2; if(svc>=15)return 1; return 0; }
+  function bandIdxMgmt(svc){ if(svc>=35)return 4; if(svc>=30)return 3; if(svc>=25)return 2; if(svc>=15)return 1; return 0; }
+  function bandLabel(svc,grp){
+    if(grp==='mgmt'){ if(svc>=35)return '35+ yrs'; if(svc>=30)return '30-34 yrs'; }
+    else { if(svc>=30)return '30+ yrs'; }
+    if(svc>=25)return '25-29 yrs'; if(svc>=15)return '15-24 yrs'; return 'under 15 yrs';
+  }
+  // reduction % if commencing at whole-year age with svc years; null if under 55.
+  function redPct(grp,age,svc){
+    if(age>=65) return 0;
+    if(age<55) return null;
+    const unr=unreducedYrs(grp);
+    if(svc>=unr) return 0;
+    const a=Math.min(64,Math.max(55,Math.floor(age)));
+    return grp==='mgmt' ? MGMT_RED[a][bandIdxMgmt(svc)] : UNION_RED[a][bandIdxUnion(svc)];
+  }
+
+  function render(){
+    const today=new Date(); today.setHours(0,0,0,0);
+
+    // ---- inputs ----
+    const mode=entryMode();
+    const isActive=empStatus()==='active';
+    const termed=!isActive;
+    const sep=parseD(sepEl.value);
+    let dob=null, dobApprox=false;
+    if(mode==='dates'){ dob=parseD(dobEl.value); }
+    else { const a=parseFloat(ageEl.value); if(!isNaN(a)&&a>0){ dob=addY(today,-a); dobApprox=true; } }
+    let hire=null, hireApprox=false;
+    if(mode==='dates'){ hire=parseD(hireEl.value); }
+    else { const s=parseFloat(yosEl.value); if(!isNaN(s)&&s>=0){
+      const anchor=(termed && sep && sep<today) ? sep : today;
+      hire=addY(anchor,-s); hireApprox=true;
+    } }
+    const grp=grpEl.value;
+    const formula=formulaEl.value; // 'fp' or 'cb'
+    const isCB=formula==='cb';
+
+    if(!dob || dob>today){
+      banner.className='status-banner notmet';
+      banner.innerHTML=(dob&&dob>today)?'Date of birth is in the future. Check the entry.':'Enter a date of birth (or an age) to build the timeline.';
+      cards.innerHTML=''; tlWrap.innerHTML=''; sepWrap.innerHTML=''; note.innerHTML=''; tlNote.innerHTML='';
+      return;
+    }
+    if(hire && sep && sep<hire){
+      banner.className='status-banner notmet';
+      banner.innerHTML='Separation date is before the hire date. Check the entries.';
+      cards.innerHTML=''; tlWrap.innerHTML=''; sepWrap.innerHTML=''; note.innerHTML=''; tlNote.innerHTML='';
+      return;
+    }
+
+    const by=dob.getFullYear();
+    const ageNow=yrs(dob,today);
+    const svcEnd = (sep && sep<today) ? sep : today;
+    const svcNow = hire ? Math.max(0,yrs(hire,svcEnd)) : null;
+    const fra=fraFor(by), rmd=rmdFor(by);
+    const fraDate=addM(dob,fra.m);
+    const rmdDate=addY(dob,rmd.age);
+    const medDate=addY(dob,65);
+    const age55Date=addY(dob,55);
+
+    // separation reference (planned or actual); for terminated w/o date, use today
+    const sepRef = sep || (termed ? today : null);
+    const sepAge = sepRef ? yrs(dob,sepRef) : null;
+    const sepSvc = (sepRef && hire) ? Math.max(0,yrs(hire,sepRef)) : null;
+    // whole-year versions for reduction-band lookups (the plans count completed whole years)
+    const sepAgeW = sepRef ? wholeYears(dob,sepRef) : null;
+    const sepSvcW = (sepRef && hire) ? Math.max(0,wholeYears(hire,sepRef)) : null;
+
+    // ---- retiree gate (age 55 at separation; +10 yrs Credited Service if hired on/after 1/1/2004) ----
+    const hiredPost2004 = hire ? (hire >= new Date(2004,0,1)) : null;
+    function retireeGate(){
+      if(sepAge===null) return {s:'unknown'};
+      if(sepAge < 55) return {s:'no', why:'age'};
+      if(hiredPost2004===true){
+        if(sepSvc===null) return {s:'maybe', why:'need-service'};
+        if(sepSvc < 10) return {s:'no', why:'service'};
+      } else if(hiredPost2004===null){
+        return {s:'yes-check', why:'hire-unknown'};
+      }
+      return {s:'yes'};
+    }
+    const rg=retireeGate();
+
+    // ---- unreduced-pension service milestone (Final Pay/FAP only) ----
+    const unr=unreducedYrs(grp);
+    const unrDate = (hire && !isCB) ? addY(hire,unr) : null;
+    // status of that milestone relative to separation/term
+    let unrStatus='na';
+    if(!isCB && unrDate){
+      if(termed) unrStatus = (unrDate<=(sepRef||today)) ? 'met' : 'missed';
+      else if(sep && unrDate>sep) unrStatus='missed';
+      else if(unrDate<=today) unrStatus='met';
+      else unrStatus='ontrack';
+    }
+
+    // ---- pension reduction at the separation age (if FP/FAP and we can compute) ----
+    let redAtSep=null;
+    if(!isCB && sepAgeW!==null && sepSvcW!==null) redAtSep=redPct(grp,sepAgeW,sepSvcW);
+
+    // ---- Rule of 55 ----
+    const r55Year=by+55;
+    const r55Date=new Date(r55Year,0,1);
+    const r55ok = sep ? (sep.getFullYear()>=r55Year) : null;
+
+    // ---- vesting ----
+    const vestYrs = isCB?3:5;
+    const vestDate = hire ? addY(hire,vestYrs) : null;
+    const vested = vestDate ? (vestDate<=svcEnd || ageNow>=55) : null;
+    const vestLostAtSep = vestDate && !( ageNow>=55 ) && ((sep && sep<vestDate) || (termed && !sep && vestDate>today));
+
+    // ---- snapshot line ----
+    banner.className=''; banner.innerHTML='';
+    let sub=[];
+    sub.push('Age '+ageNow.toFixed(1)+(dobApprox?' (from entered age)':''));
+    if(svcNow!==null) sub.push(svcNow.toFixed(1)+' yrs of service'+(hireApprox?' (approx.)':'')+(termed?' at termination':''));
+    else sub.push('service unknown');
+    sub.push(GRP_NAME[grp]);
+    sub.push(isCB?'Cash Balance':'Final Pay/FAP');
+    if(sep) sub.push('separation '+fmtFull(sep)+(isActive?' (planned)':''));
+    else if(termed) sub.push('terminated (no date entered)');
+    const snapshot=sub.join(' · ')+'.';
+
+    // ---- result cards ----
+    cards.innerHTML='';
+    const mk=(cls,label,val,desc)=>{
+      const d=document.createElement('div'); d.className='rcard '+cls;
+      d.innerHTML='<div class="rlabel">'+label+'</div><div class="rval">'+val+'</div><div class="rdesc">'+desc+'</div>';
+      cards.appendChild(d);
+    };
+
+    // Card 1: Retiree gate (RMSA + retiree medical)
+    const svcReq = hiredPost2004===false ? '' : ' plus 10 yrs of Credited Service (hires on/after 1/1/2004)';
+    if(rg.s==='yes') mk('good','Retiree gate (age 55)','Met',snapshot+' Ends employment at 55+, so the client is a PG&E retiree: eligible for the RMSA and retiree medical'+svcReq+'.');
+    else if(rg.s==='yes-check') mk('good','Retiree gate (age 55)','Met (verify service)','Separation is at 55+, so the age gate is met. If the client was hired on/after 1/1/2004, also confirm 10+ yrs of Credited Service for RMSA / retiree-medical eligibility.');
+    else if(rg.s==='maybe') mk('neutral','Retiree gate (age 55)','Needs service','Separation is at 55+, but this client was hired on/after 1/1/2004, so RMSA / retiree-medical eligibility also needs 10+ yrs of Credited Service. Enter a hire date or years of service.');
+    else if(rg.s==='no' && rg.why==='age') mk('warn','Retiree gate (age 55)','Not met','Separation is before age 55, so the client is NOT a PG&E retiree: RMSA and retiree medical are forfeited entirely, even with a fully vested pension. Often the single largest cost of leaving early.');
+    else if(rg.s==='no' && rg.why==='service') mk('warn','Retiree gate (age 55)','Not met','Age 55 is met, but a post-2004 hire also needs 10 yrs of Credited Service ('+sepSvc.toFixed(1)+' yrs at separation). Short of it, no RMSA / retiree medical.');
+    else mk('neutral','Retiree gate (age 55)','Enter dates','Enter a date of birth (or age) and a separation date to test the age-55 retiree gate for RMSA and retiree medical.');
+
+    // Card 2: Rule of 55
+    if(r55ok===true) mk('good','Rule of 55 (401k)','Applies','Separation is in/after the calendar year they turn 55 ('+r55Year+'). RSP 401(k) withdrawals are penalty-free while the money stays in the plan. An IRA rollover forfeits this.');
+    else if(r55ok===false) mk('warn','Rule of 55 (401k)','Does not apply','Separation is before the calendar year they turn 55 ('+r55Year+'). Penalty-free 401(k)/IRA access generally waits for 59½ ('+fmt(addM(dob,714))+'), or 72(t)/SEPP as a last resort.');
+    else if(termed) mk('warn','Rule of 55 (401k)','Needs sep. date','Client is terminated: the Rule of 55 applies only if the separation year was '+r55Year+' or later. Enter the date of separation to confirm.');
+    else mk('neutral','Rule of 55 (401k)','Opens Jan '+r55Year,'Separate in/after that calendar year and RSP 401(k) withdrawals are penalty-free while the money stays in the plan. No separation date entered yet.');
+
+    // Card 3: Pension early-reduction
+    if(isCB){
+      mk('good','Pension reduction','None (Cash Balance)','Cash Balance benefits are simply the account value, payable at any age once vested, as a lump sum or lifetime annuity. No early-retirement reduction applies.');
+    } else if(redAtSep!==null){
+      if(redAtSep===0) mk('good','Pension reduction','0% (unreduced)','At '+ (sepAge?sepAge.toFixed(1):'?') +' with '+(sepSvc?sepSvc.toFixed(1):'?')+' yrs ('+bandLabel(sepSvcW,grp)+'), the '+(grp==='mgmt'?'Final Average Pay':'Final Pay')+' pension is unreduced'+(sepSvcW>=unr?(' (met the '+unr+'-yr threshold)'):(' at this age'))+'. Deferring commencement keeps it unreduced.');
+      else mk('warn','Pension reduction','~'+redAtSep+'% if now','Commencing at '+sepAge.toFixed(1)+' with '+sepSvc.toFixed(1)+' yrs ('+bandLabel(sepSvcW,grp)+') cuts the monthly pension ~'+redAtSep+'%, permanently. Reaching '+unr+' yrs, or deferring toward 65, reduces or removes it. Reductions are computed by month.');
+    } else if(!isCB && sepAge!==null && sepAge<55){
+      mk('warn','Pension reduction','N/A before 55','A Final Pay/FAP pension can’t commence before age 55. A client leaving before 55 becomes a deferred-vested pensioner and commences later (reduced unless 30/35 yrs or age 65).');
+    } else {
+      mk('neutral','Pension reduction','Enter dates','Enter age/service and a separation date to compute the Final Pay/FAP early-retirement reduction (or confirm 0% at the '+unr+'-yr threshold).');
+    }
+
+    // Card 4: SS FRA / RMD
+    const rmdNote = rmd.legacy ? ' (already applicable under pre-SECURE rules, confirm status)' : ' ('+rmdDate.getFullYear()+')';
+    const born1959 = rmd.note ? ' 1959 birth year: IRS proposed regs say 73, confirm final regs.' : '';
+    mk('neutral','Social Security FRA','FRA '+fra.label+' · RMD '+rmd.label,'Born '+by+': Social Security full retirement age (FRA) is '+fra.label+' ('+fmt(fraDate)+'); RMDs begin at '+rmd.label+rmdNote+'.'+born1959+' Claiming window 62–70.');
+
+    // ---- timeline ----
+    const items=[];
+    const it=(d,cat,catCls,title,desc,warn)=>{ items.push({d:d,cat:cat,catCls:catCls,title:title,desc:desc,warn:!!warn}); };
+
+    // RMSA credit ages
+    it(addY(dob,45),'RMSA','hc','RMSA credits begin (age 45)','PG&E starts crediting the Retiree Medical Savings Account $5,000/yr. A spouse or registered domestic partner gets a parallel account that also grows $5,000/yr. The earlier this starts relative to retirement, the larger the eventual medical-premium subsidy.');
+    it(addY(dob,46),'RMSA','hc','RMSA interest begins (age 46)','The account starts earning 4.5% annual compounding interest. Working longer past 46 compounds a bigger balance, worth modeling against an early-retirement decision.');
+
+    if(vestDate && !vested){
+      if(vestLostAtSep) it(vestDate,'Employment','emp','Vesting cliff: after the separation date',(isCB?'Cash Balance':'Final Pay/FAP')+' vests at '+vestYrs+' years ('+fmt(vestDate)+'), but '+(sep?('separation is '+fmtFull(sep)):'the client is already terminated')+'. The pension is forfeited.'+(isActive?' If at all possible, revisit the date.':''),true);
+      else it(vestDate,'Employment','emp','Vesting cliff ('+vestYrs+' years of service)','The pension becomes non-forfeitable. Separating before this date (and before age 55) forfeits it.');
+    }
+    it(new Date(by+50,0,1),'401(k)','k401','Catch-up contributions unlock','From the calendar year they turn 50: +$8,000 (2026) on top of the $24,500 402(g) limit. From 2026, a client who earned $150,000+ the prior year must make catch-ups as Roth, now supported by the new RSP Roth source.');
+
+    if(!isCB && unrDate && unrStatus!=='na'){
+      if(unrStatus==='missed') it(unrDate,'Pension','pension','Unreduced-pension milestone: '+(sep?'MISSED at separation':'NOT met at termination')+' ('+unr+' yrs)','Reaching '+unr+' yrs of service makes the '+(grp==='mgmt'?'Final Average Pay':'Final Pay')+' pension unreduced at any age 55–65. It would have arrived '+fmt(unrDate)+', '+(sep?(monthsBetween(sep,unrDate)+' months after the separation date'):('about '+monthsBetween(today,unrDate)+' more months of service than the client has'))+'. Below it, an early retirement is permanently reduced.',true);
+      else it(unrDate,'Pension','pension','Unreduced-pension milestone ('+unr+' yrs of service)','From here, the '+(grp==='mgmt'?'Final Average Pay':'Final Pay')+' pension is fully unreduced at any retirement age 55–65 (no early-reduction table). The single highest-leverage service number for this client.');
+    }
+
+    // age 55 - retiree gate + earliest pension (FP/FAP)
+    const gateWarn = (rg.s==='no');
+    it(age55Date,'RMSA','hc','Age 55: retiree gate'+(!isCB?' & earliest pension':''),'Ending employment at 55+ makes the client a PG&E retiree: the gate to the RMSA and retiree medical'+(hiredPost2004===false?'':' (plus 10 yrs of Credited Service for post-2004 hires)')+'. '+(isCB?'Cash Balance can already be taken at any age, but retiree medical still needs age 55.':'Also the earliest a Final Pay/FAP pension can commence.'),gateWarn);
+
+    it(r55Date,'401(k)','k401','Rule of 55 window opens','Separate from PG&E in/after calendar year '+r55Year+' and 401(k) withdrawals from the RSP are penalty-free, a bridge to 59½. The money must stay in the plan: an IRA rollover forfeits it.'
+      +(r55ok===false?' <strong>The entered separation date is before this window: the Rule of 55 does not apply.</strong>':'')
+      +((termed&&!sep)?' <strong>Client is terminated: applies only if the separation year was '+r55Year+' or later. Confirm the date.</strong>':''),r55ok===false);
+
+    it(addM(dob,714),'401(k)','k401','Age 59½: early-withdrawal penalty ends','The 10% penalty ends for 401(k)s and IRAs regardless of employment status. Rollover flexibility is no longer constrained by Rule-of-55 mechanics.');
+    it(new Date(by+60,0,1),'401(k)','k401','Super catch-up window (ages 60–63)','For calendar years '+(by+60)+'–'+(by+63)+' the catch-up rises to $11,250 (2026 figure) instead of $8,000; it reverts to the standard catch-up the year they turn 64. Four high-savings years, plan deferral rates around them.');
+    it(addY(dob,62),'Soc Sec','ss','Social Security: earliest claim','Claiming at 62 is permanently reduced (~30% below an FRA-'+fra.label+' benefit). The earnings test withholds benefits if they claim while still working before FRA. Usually the decision to model, not default into.');
+    it(addY(dob,63),'Medicare','medicare','IRMAA lookback begins','Medicare premiums are set on MAGI from two years prior, so income from the year they turn 63 sets their first premiums at 65. Roth conversions and gain harvesting from here on should be sized against the tiers (2026: above $109,000 single / $218,000 MFJ; cliffs, assessed per person).');
+    it(addM(dob,777),'Medicare','medicare','Medicare Initial Enrollment Period opens','7-month window: 3 months before the 65th-birthday month through 3 months after. Missing it without active employer coverage means lifetime Part B penalties. Calendar this one.');
+    it(medDate,'Medicare','medicare','Age 65: Medicare & unreduced pension','The pre-65 bridge (retiree medical or COBRA) hands off to Medicare + supplement, and the RMSA subsidy shifts from 55% of premium to 30%. A Final Pay/FAP pension is unreduced at 65 regardless of service. COBRA does <strong>not</strong> count as employer coverage for delaying Part B.');
+    it(fraDate,'Soc Sec','ss','Social Security Full Retirement Age ('+fra.label+')','Unreduced benefit and the earnings test ends. Waiting past FRA earns ~8%/yr in delayed credits to 70. Coordinate spousal/survivor claiming here.');
+    it(addY(dob,70),'Soc Sec','ss','Age 70: delayed credits max out','No benefit to waiting past 70. If not yet claimed, claim now. A common miss for clients who "forgot" after retiring early.');
+    it(addM(dob,846),'Tax / RMD','tax','Age 70½: QCDs available','Qualified Charitable Distributions direct from IRAs (annual limit indexed), excluded from MAGI (IRMAA-friendly giving), and count toward RMDs once those begin.');
+    if(rmd.legacy) it(rmdDate,'Tax / RMD','tax','RMDs (already applicable)','Born '+by+': RMDs began under pre-SECURE rules. Confirm current-year RMDs are being taken on all pre-tax accounts and the pension.');
+    else it(rmdDate,'Tax / RMD','tax','Age '+rmd.label+': RMDs begin ('+rmdDate.getFullYear()+')','Required minimum distributions start on pre-tax balances (Roth IRA and Roth 401(k) are exempt). The first RMD can be delayed to April 1, '+(rmdDate.getFullYear()+1)+', but that doubles two RMDs into one tax year and can spike IRMAA. The years before this date are the Roth-conversion window.'+(rmd.note?' (1959 birth year: IRS proposed regs say 73, confirm final regs.)':''));
+
+    if(sep) it(sep,'Employment','emp','Separation from PG&E'+(isActive?' (planned)':''),'Run the separation checklist in Section 03: retiree gate, pension commencement, healthcare bridge, 401(k) strategy, and the Roth-conversion window that opens here.',(rg.s==='no'||unrStatus==='missed'||vestLostAtSep||r55ok===false));
+
+    items.sort((a,b)=>a.d-b.d);
+    let nextIdx=-1;
+    items.forEach((x,i)=>{ if(nextIdx<0 && x.d>=today) nextIdx=i; });
+
+    tlWrap.innerHTML='';
+    items.forEach((x,i)=>{
+      const past=x.d<today;
+      const li=document.createElement('div');
+      li.className='tli'+(past?' past':'')+(i===nextIdx?' next':'')+(x.warn?' warnitem':'');
+      const ageAt=yrs(dob,x.d);
+      li.innerHTML='<div class="tlcard">'
+        +'<div class="tlhead"><span class="tld">'+fmt(x.d)+'</span><span class="tla">age '+(Math.round(ageAt*10)/10).toFixed(1).replace(/\.0$/,'')+'</span>'
+        +'<span class="cat '+x.catCls+'">'+x.cat+'</span>'
+        +(i===nextIdx?'<span class="nextchip">Next up</span>':'')
+        +(past?'<span class="passchip">Passed</span>':'')
+        +'</div><div class="tlt">'+x.title+'</div><div class="tldesc">'+x.desc+'</div></div>';
+      tlWrap.appendChild(li);
+    });
+    tlNote.innerHTML='Dated for this client from '+(dobApprox?'the entered age (approximate, enter a date of birth for exact dates)':'the entered date of birth')
+      +(hire?(hireApprox?' and approximate service':''):'; service-based triggers (vesting, unreduced-pension milestone) omitted until a hire date or years of service is entered')
+      +'. '+(termed?'Client is terminated: service is frozen'+(sep?(' at '+fmtFull(sep)):' as of today')+', so any service-based milestone not already reached is shown as missed. Age-based triggers still apply. ':'')
+      +'Indexed dollar figures are 2026 values.';
+
+    // ---- separation checklist ----
+    sepWrap.innerHTML='';
+    const st=(cls,title,body)=>{
+      const d=document.createElement('div'); d.className='step'+(cls?' '+cls:'');
+      d.innerHTML='<div class="sn"></div><div class="sc"><strong>'+title+'</strong><p>'+body+'</p></div>';
+      sepWrap.appendChild(d);
+    };
+    if(sep){
+      sepIntro.innerHTML='Keyed to the entered separation date: <strong>'+fmtFull(sep)+'</strong> (age '+yrs(dob,sep).toFixed(1)+(sepSvc!==null?', '+sepSvc.toFixed(1)+' yrs of service':'')+').';
+    } else if(termed){
+      sepIntro.innerHTML='Client is terminated but no separation date is entered; the checklist below uses today as the reference. Enter the actual date above for exact verdicts (especially the retiree gate, Rule of 55, and COBRA math).';
+    } else {
+      sepIntro.innerHTML='No separation date entered. Showing the generic checklist. Enter a date above to get the bridge math and verdicts filled in.';
+    }
+
+    // 1. retiree gate
+    if(rg.s==='no' && rg.why==='age'){
+      if(isActive) st('flag','Retiree gate: separation is before age 55','Leaving before 55 ('+fmt(age55Date)+') forfeits the RMSA and retiree medical entirely, regardless of vesting or years of service. Before the client gives notice, quantify what waiting to 55 preserves: the RMSA subsidy (often $100k+ at retirement) and access to the group retiree medical bridge.');
+      else st('flag','Retiree gate: separated before age 55','The client left before 55, so they are a deferred-vested pensioner, not a retiree: no RMSA and no retiree medical. Plan the healthcare bridge to 65 via COBRA/marketplace, and the pension will commence later (reduced unless 30/35 yrs or age 65).');
+    } else if(rg.s==='no' && rg.why==='service'){
+      st('flag','Retiree gate: 10-year service requirement not met','Age 55 is satisfied, but this post-2004 hire needs 10 yrs of Credited Service for RMSA / retiree medical ('+sepSvc.toFixed(1)+' at separation). Confirm the exact figure at PensionConnect, a service bridge or rehire could change it.');
+    } else if(rg.s==='yes' || rg.s==='yes-check'){
+      st('ok','Retiree gate: met at separation','Ending employment at 55+ makes the client a PG&E retiree: RMSA and retiree-medical eligible'+(hiredPost2004===false?'':' (confirm 10+ yrs Credited Service for a post-2004 hire)')+'. Enroll in retiree medical within the required window, the RMSA reimburses 55% of the premium pre-Medicare, 30% after.');
+    } else if(rg.s==='maybe'){
+      st('','Retiree gate: confirm service','Separation is at 55+, but a post-2004 hire also needs 10 yrs of Credited Service. Enter hire data above (or confirm at PensionConnect) to lock the RMSA / retiree-medical verdict.');
+    } else {
+      st('','Test the retiree gate (age 55)','Enter a date of birth (or age) and separation date above. Ending employment at 55+ is what makes the client a PG&E retiree, the gate to the RMSA and retiree medical.');
+    }
+
+    // 2. pension decision
+    if(isCB){
+      st('','Cash Balance decision at separation','The benefit is simply the vested account balance, payable at any age: a one-time lump sum (a direct rollover to an IRA avoids the mandatory 20% withholding) or a lifetime annuity. If deferred, it keeps earning quarterly interest. Present value ≤ $5,000 is auto-distributed. No interest-rate/segment-rate sensitivity like the legacy formulas.');
+    } else {
+      let body;
+      if(unrStatus==='met') body='Unreduced-pension milestone met ('+unr+' yrs), so an age-55+ commencement is not reduced. Commence or defer as the income plan dictates; a lump sum is available only if present value ≤ $5,000. Direct-rollover any lump sum to avoid the 20% withholding.';
+      else if(redAtSep!==null && redAtSep>0) body='Commencing at '+sepAge.toFixed(1)+' with '+sepSvc.toFixed(1)+' yrs cuts the pension ~'+redAtSep+'% permanently ('+bandLabel(sepSvcW,grp)+' band). Two levers: work to the '+unr+'-yr threshold for a fully unreduced benefit, or defer commencement toward 65 (each deferred month shrinks the reduction). Model both against the client’s income need.';
+      else if(sepAge!==null && sepAge<55) body='A Final Pay/FAP pension can’t start before 55; the client would leave as a deferred-vested pensioner and commence later (reduced unless they had 30/35 yrs, or they wait to 65).';
+      else body='Commence or defer. Below the '+unr+'-yr threshold, commencing before 65 uses the early-reduction table; deferring toward 65 shrinks the cut. Enter age/service above for the exact percentage.';
+      st((redAtSep!==null&&redAtSep>0)?'flag':'','Pension decision at separation',body);
+    }
+
+    // 3. healthcare bridge
+    if(sep){
+      if(sep>=medDate) st('','Healthcare: already Medicare-age at separation','Coordinate Part B enrollment with the 8-month Special Enrollment Period that follows loss of active employer coverage. Do not rely on COBRA to delay Part B.');
+      else {
+        const cobraEnd=addM(sep,18);
+        const gapM=monthsBetween(sep,medDate);
+        const retiree = (rg.s==='yes'||rg.s==='yes-check');
+        if(retiree) st('','Healthcare bridge to Medicare: '+gapM+' months','As a retiree, the client can enroll in PG&E-sponsored retiree medical to 65, with the RMSA reimbursing 55% of the pre-Medicare premium. Compare that against COBRA (18 months, to '+fmt(cobraEnd)+') on total cost. At 65 the RMSA drops to 30% and Medicare becomes primary.');
+        else if(cobraEnd>=medDate) st('flag','Healthcare bridge to Medicare: '+gapM+' months','Not retiree-eligible (see step 1), so no RMSA/retiree medical. COBRA (18 months, to '+fmt(cobraEnd)+') can just reach Medicare ('+fmt(medDate)+'). Budget its full-premium cost, then the Medicare handoff at 65.');
+        else st('flag','Healthcare bridge to Medicare: '+gapM+' months','Not retiree-eligible, and COBRA runs out '+fmt(cobraEnd)+', '+monthsBetween(cobraEnd,medDate)+' months short of Medicare ('+fmt(medDate)+'). Budget marketplace coverage for the gap, commonly $1,000–$2,000+/month per person.');
+      }
+    } else st('','Healthcare bridge to Medicare','Map coverage from the last day on payroll to 65: PG&E retiree medical + RMSA (if the age-55 retiree gate is met), COBRA (18 months), or marketplace. Then the Medicare handoff at 65, where the RMSA subsidy drops from 55% to 30%.');
+
+    // 4. 401(k) strategy
+    st(r55ok===false?'flag':'','401(k): Rule of 55, loans, and Roth',(r55ok===true
+      ? 'Rule of 55 applies. Keep enough in the RSP for pre-59½ income before any IRA rollover (the rollover forfeits penalty-free access). '
+      : r55ok===false
+      ? 'Rule of 55 does NOT apply (separation before calendar year '+r55Year+'). Penalty-free access generally waits for 59½ ('+fmt(addM(dob,714))+'); model the bridge income source first. '
+      : (termed
+        ? 'Client is terminated: the Rule of 55 applies only if the separation year was '+r55Year+' or later. Confirm the date before recommending any rollover. '
+        : 'If separation lands in/after the calendar year they turn 55, keep enough in the RSP for pre-59½ income before any IRA rollover. '))
+      +'Settle any 401(k) loan deliberately (pay off, keep with balance, or accept the 1099-R default). The RSP’s new Roth source (2026) and after-tax spillover open direct and mega-backdoor Roth options while still employed, coordinate before rolling out.');
+
+    // 5. Excess Plan (high earners)
+    st('','Excess Plan check (high earners)','If the client’s pay or pension approaches the IRS limits (§415 / §401(a)(17), $360,000 of pay counted in 2026)'+(grp==='mgmt'?' — common for Management/A&T':'')+', part of the benefit may sit in the non-qualified Excess Plan. It pays as a lump sum at retirement only, is unsecured and not PBGC-insured, and a mid-career estimate can change. Treat it as a riskier, separate slice of the pension.');
+
+    // 6. Roth-conversion window
+    const winAnchor = sep || (termed ? today : null);
+    const winStart = winAnchor ? Math.ceil(yrs(dob,winAnchor)) : null;
+    st('','Roth-conversion window'+(winAnchor?': roughly ages '+winStart+'–'+Math.min(rmd.age,Math.round(fra.m/12)) :''),(winAnchor
+      ? 'From '+(sep?'separation':'now (already terminated)')+' until Social Security ('+fmt(fraDate)+' at FRA, or earlier if claimed) and RMDs ('+rmdDate.getFullYear()+') stack up, taxable income is unusually low: the classic fill-the-bracket conversion years. From the year they turn 63 ('+(by+63)+'), size every conversion against the IRMAA tiers as well as the bracket.'
+      : 'The years between separation and the onset of Social Security and RMDs are the low-bracket conversion window. From the year they turn 63, size conversions against IRMAA tiers as well as the bracket.'));
+
+    note.innerHTML=(dobApprox||hireApprox?'Approximate mode: ':'')
+      +(dobApprox?'date of birth derived from the entered age; ':'')
+      +(hireApprox?'hire date derived from years of service; ':'')
+      +((dobApprox||hireApprox)?'enter exact dates for exact trigger dates. ':'')
+      +'2026 figures: 402(g) $24,500 · catch-up $8,000 · super catch-up $11,250 · IRMAA tiers from $109,000 single / $218,000 MFJ. Verify current-year values before advising.';
+  }
+
+  [dobEl,ageEl,hireEl,yosEl,sepEl,grpEl,formulaEl].forEach(el=>{el.addEventListener('input',render);el.addEventListener('change',render);});
+  [...empRadios,...modeRadios].forEach(r=>{r.addEventListener('change',()=>{ syncModeVisibility(); syncSepLabel(); render(); });});
+  syncModeVisibility();
+  syncSepLabel();
+  render();
+})();
+</script>
+</body>
+</html>

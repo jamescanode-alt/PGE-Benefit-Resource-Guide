@@ -1,5 +1,43 @@
 # CHANGE_LOG
 
+## 2026-07-21 (2) — Add the Financial Trigger Finder (triggers.html)
+
+**Summary.** Added `triggers.html`, an interactive advisor tool modeled on the AT&T guide's
+Trigger Finder. The advisor enters a client's date of birth, hire date, planned/actual
+separation date, employee group, and pension formula (either exact dates or age/years), and the
+tool renders three outputs: four live result cards, a dated trigger timeline, and a separation
+checklist, all keyed to that client. Runs entirely in the browser; nothing is stored or sent.
+
+**PG&E-specific adaptation (vs. the AT&T source, which centered on "Mod 75"):**
+- PG&E has no Rule of 75. The tool's spine is instead the **age-55 retiree gate** (the gate to
+  RMSA + retiree medical; also requires 10 yrs of Credited Service for hires on/after 1/1/2004)
+  and the **unreduced-pension service milestone** (30 yrs union / 35 yrs management).
+- Added a **pension-formula axis** (Final Pay/FAP vs Cash Balance) alongside the group axis,
+  since it changes vesting (5 vs 3 yrs), whether early-reduction applies, and lump-sum eligibility.
+- The result cards compute the **actual early-retirement reduction %** from the SPD reduction
+  tables (union 4-band / management 5-band), plus retiree-gate status, Rule of 55, and SS FRA/RMD.
+- PG&E-only timeline triggers: RMSA credits begin (45), RMSA interest begins (46), the 30/35-yr
+  unreduced milestone, the RMSA 55%→30% subsidy shift at 65, and the 2026 Roth-source note.
+- Reference table + non-age plan-rule notes (Roth source, $5,000 cash-out, Excess Plan).
+
+**Wiring.** Added a `triggers.html` option to the "Viewing" planpick dropdown in both `index.html`
+and `management.html`, plus a "Tools · Financial Trigger Finder" sidebar link in each, so the tool
+is reachable from either guide. triggers.html links back to both guides.
+
+**Bug found and fixed during testing.** In "ages" mode the tool derives a DOB from the entered
+age; the fractional age→date→age round-trip (365.25-day years) drifted a whole number like 58
+to 57.99, which floored into the wrong reduction band (Management 58/32 showed 12% instead of the
+correct 9%). Added a `wholeYears()` calendar-year helper and switched all reduction-band and
+service-threshold lookups to it. Re-verified six band cases against the SPD tables (union 58/32→0,
+55/20→26, 62/10→9; mgmt 58/32→9, 59/32→6, 55/35→0) — all now correct.
+
+**Tests.** Drove the engine through union/management × Final Pay/Cash Balance × active/terminated
+× before/after 55: retiree-gate service logic (post-2004 hire needing 10 yrs; pre-2004 exempt),
+terminated-before-55 correctly flags the missed gate and unreduced milestone as red timeline
+items, Cash Balance shows no pension reduction. Tag balance 54/54 div, 4/4 section, 1/1 table.
+Fixed a mobile-only calc-form overflow (fixed 200px labels) with a &le;560px stacking media query;
+confirmed 375px scrollWidth == clientWidth after. No console errors. Zero Farther/Focus refs.
+
 ## 2026-07-21 — Refresh both guides against PG&E's current online plan summaries
 
 **Summary.** The user supplied PG&E's current benefit PDFs (401(k), Pension, Pension Quick Start,
