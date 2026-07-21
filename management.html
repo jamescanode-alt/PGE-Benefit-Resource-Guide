@@ -285,7 +285,7 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
   <div class="meta">
     <div><span class="k">Plan</span><span class="v">PG&amp;E Corporation Retirement Plan (Part 1)</span></div>
     <div><span class="k">Population</span><span class="v">Management &amp; A&amp;T employees</span></div>
-    <div><span class="k">Recordkeepers</span><span class="v">Fidelity (401k) &middot; Xerox HR (pension)</span></div>
+    <div><span class="k">Recordkeepers</span><span class="v">Fidelity (401k) &middot; PensionConnect / WTW (pension)</span></div>
     <div><span class="k">Source</span><span class="v">Summary Plan Descriptions (SPDs)</span></div>
   </div>
 </div>
@@ -382,7 +382,7 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
     <span class="tag">The key question</span>
     <p>Ask every client: <strong>"What year were you hired at PG&amp;E?"</strong> and <strong>"Were you employed on December 31, 2012?"</strong> Employees hired before 2013 were automatically enrolled in the Final Average Pay Pension. PG&amp;E offered those employees a <strong>one-time election in 2013</strong> to switch to the Cash Balance Pension instead. If a client switched, their Final Average Pay benefit was frozen as of December 31, 2013 (based on pay and service through that date), and their Cash Balance account started growing from January 1, 2014 onward, meaning some long-tenured clients have <strong>both</strong> a small frozen Final Average Pay benefit and a growing Cash Balance account.</p>
   </div>
-  <p class="small">Clients can check which formula applies (and review real account figures) at <a class="inline" href="https://www.pgepensioncenter.com" target="_blank" rel="noopener">pgepensioncenter.com</a>.</p>
+  <p class="small">Clients can check which formula applies, and run a real pension estimate ("Estimate My Pension Benefit"), at PG&amp;E PensionConnect: <a class="inline" href="https://www.mypensionconnect.com" target="_blank" rel="noopener">mypensionconnect.com</a>.</p>
   <div class="callout">
     <span class="tag blue">Client example</span>
     <p><strong>Karen Whitfield</strong> was hired in 2005, before the cutoff, and stayed on the <strong>Final Average Pay Pension only</strong>. Compare that to <strong>Priya Nair</strong>, hired in 2017: she has a <strong>Cash Balance Pension only</strong>. Same job level, same employer, two different formulas, purely because of hire date.</p>
@@ -613,6 +613,24 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
   </table></div>
   <p class="small">The "Pop-Up" version of this election would cost a bit more than $2,318.26 up front, but if the joint pensioner dies before the employee, the employee's payment would jump back up to the full $2,448 for the rest of their life.</p>
 
+  <h4>PG&amp;E's published sample: all eight forms side by side</h4>
+  <p>PG&amp;E's current pension materials publish this sample spread (the actuarial reduction factors work the same way for the final average pay annuity; figures are illustrative only and depend on each client's own and their beneficiary's ages):</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Form of payment</th><th>To you</th><th>To your beneficiary</th></tr></thead>
+    <tbody>
+      <tr><td>Single life pension</td><td class="num">$4,236.26</td><td class="num">&mdash;</td></tr>
+      <tr><td>25% joint pension</td><td class="num">$4,134.59</td><td class="num">$1,033.65</td></tr>
+      <tr><td>50% joint pension</td><td class="num">$4,041.39</td><td class="num">$2,020.70</td></tr>
+      <tr><td>75% joint pension</td><td class="num">$3,863.47</td><td class="num">$2,897.60</td></tr>
+      <tr><td>100% joint pension</td><td class="num">$3,704.49</td><td class="num">$3,702.49</td></tr>
+      <tr><td>25% joint pension ("pop-up")</td><td class="num">$4,104.94</td><td class="num">$1,026.24</td></tr>
+      <tr><td>50% joint pension ("pop-up")</td><td class="num">$3,990.56</td><td class="num">$1,995.28</td></tr>
+      <tr><td>75% joint pension ("pop-up")</td><td class="num">$3,774.51</td><td class="num">$2,830.88</td></tr>
+      <tr><td>100% joint pension ("pop-up")</td><td class="num">$3,575.40</td><td class="num">$3,575.40</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small">Read across: the more a client protects a survivor (higher %), and the pop-up feature on top of that, the more the retiree's own monthly check is reduced. Each pop-up row pays the retiree slightly less than the plain joint row at the same percentage, that gap is the cost of the pop-up guarantee.</p>
+
   <div class="callout good">
     <span class="tag">Client example: Karen Whitfield</span>
     <p>Karen retires at 65 with the $4,522.00/month benefit from Section 04. Her husband is also 62, matching the SPD example's ages, so the same <strong>0.947</strong> factor applies: $4,522.00 &times; 0.947 = <strong>$4,282.33/month</strong> to Karen, with her husband continuing to receive 50% of that, <strong>$2,141.17/month</strong>, if she dies first. Electing Single Life instead would pay her the full $4,522.00, with nothing continuing to him.</p>
@@ -624,18 +642,27 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
   </div>
   <div class="callout warn">
     <span class="tag">Mandatory cash-out for small benefits</span>
-    <p>Per the SPD, if the present value of a vested benefit is under $5,000, PG&amp;E automatically distributes it, as a single cash payment if under $1,000, or an automatic IRA rollover if between $1,000 and $5,000, rather than paying a monthly annuity. Note federal law (SECURE 2.0) permits plans to raise this cash-out ceiling to $7,000; confirm PG&amp;E's current threshold with the Pension Center rather than assuming.</p>
+    <p>If the present value of a vested pension is <strong>$5,000 or less</strong>, it is paid as a lump sum regardless of formula. If the client doesn't return completed paperwork within 60 days: a value <strong>over $1,000 up to $5,000</strong> is automatically rolled into an IRA PG&amp;E selects; <strong>$1,000 or less</strong> is cashed out. (PG&amp;E's current materials keep this threshold at $5,000, it did <em>not</em> adopt the higher $7,000 ceiling that SECURE 2.0 permits.)</p>
+  </div>
+  <div class="callout gold">
+    <span class="tag">Watch for: the Excess Plan (common for this population)</span>
+    <p>Management/A&amp;T clients are the ones most likely to hit the IRS annual pension limits (the IRC &sect;415 benefit limit and &sect;401(a)(17) pay limit, $360,000 of pay counted in 2026). When the qualified pension is capped, PG&amp;E pays the overage through a separate <strong>Excess Plan</strong>. Two things to flag: it pays <strong>only as a lump sum at retirement</strong> (a projected Excess Plan benefit can shrink or disappear with future pay or IRS-limit changes, so don't treat a mid-career estimate as locked in), and it is a <strong>non-qualified</strong> benefit, unsecured, <strong>not PBGC-insured</strong>, and at genuine risk if PG&amp;E were to enter bankruptcy. For a highly paid client this can be a large, and structurally riskier, slice of the total pension. Worth its own conversation about diversification and timing.</p>
   </div>
 </section>
 
 <section class="block" id="savings">
   <div class="pn">Section 09 &middot; The Savings Plan</div>
   <h2>The 401(k) / Retirement Savings Plan</h2>
-  <p>PG&amp;E Corporation's Retirement Savings Plan (RSP) is the company's 401(k), held at <strong>Fidelity Investments</strong>, and is the same plan used by union employees. Management/A&amp;T employees may contribute <strong>1%&ndash;50%</strong> of covered compensation, in 1% increments, on a pre-tax or after-tax basis (or both), a notably wider range than the union plan's 20% cap.</p>
+  <p>PG&amp;E Corporation's Retirement Savings Plan (RSP) is the company's 401(k), held at <strong>Fidelity Investments</strong>, and is the same plan used by union employees. Management/A&amp;T employees may contribute <strong>1%&ndash;50%</strong> of eligible pay, in 1% increments, on a pre-tax, Roth, or after-tax basis (or any mix), subject to IRS limits.</p>
 
-  <div class="callout warn">
-    <span class="tag">Roth availability: unconfirmed</span>
-    <p>As documented in this project's source SPD, the RSP does <strong>not</strong> offer a Roth 401(k) option. However, that source predates current law: starting in 2026, SECURE 2.0 requires catch-up contributions to be made as Roth for employees whose prior-year wages exceeded $145,000&ndash;$150,000 (indexed), which generally forces plans to add a Roth option to stay compliant, and this population skews toward higher earners more likely to be affected. <strong>Confirm current Roth availability directly with Fidelity NetBenefits</strong> rather than assuming either way.</p>
+  <div class="callout good">
+    <span class="tag">New for 2026: the Roth 401(k) source</span>
+    <p>Starting <strong>January 1, 2026</strong>, the RSP adds a <strong>Roth contribution option</strong>, a genuinely new feature (earlier plan documents did not offer one). Clients can now split contributions across <strong>three sources</strong>: <strong>pre-tax</strong>, <strong>Roth</strong> (after-tax dollars in, tax-free qualified growth and withdrawals out), and <strong>regular after-tax</strong> (the mega-backdoor bucket). Any mix is allowed, as long as total contributions stay within the IRS annual limits.</p>
+    <p style="margin-top:8px">This matters especially for this higher-earning population because of a SECURE 2.0 mandate landing the same year: anyone who earned <strong>more than $150,000</strong> in the prior year must make their age-50+ catch-up contributions as <strong>Roth</strong>. Many Management/A&amp;T clients clear that wage line, and the new Roth source is what lets them comply.</p>
+  </div>
+  <div class="callout gold">
+    <span class="tag">The advisor's lens: Roth for high earners</span>
+    <p>A senior Management client at the top of the wage scale is often in a high bracket <em>now</em>, so pre-tax deferral usually wins for the bulk of contributions. But the new direct Roth source is still valuable: it's the compliance path for mandatory Roth catch-ups, and it lets clients deliberately build a tax-free bucket for retirement-year MAGI control (IRMAA, Section 11) without routing through after-tax conversions. Tax diversification, some pre-tax and some Roth, gives the most flexibility.</p>
   </div>
 
   <h3>Enrollment</h3>
@@ -659,7 +686,7 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
       <tr><td><strong>Super catch-up, ages 60&ndash;63</strong><br><span class="small">(includes $11,250 catch-up)</span></td><td class="num text-center">$35,750</td><td class="num text-center">$83,250</td></tr>
     </tbody>
   </table></div>
-  <p class="small">Figures shown are for <strong>2026</strong> and are adjusted for inflation every year. Confirm the current-year numbers at <a class="inline" href="https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-401k-and-profit-sharing-plan-contribution-limits" target="_blank" rel="noopener">irs.gov: 401(k) contribution limits</a> and <a class="inline" href="https://www.irs.gov/retirement-plans/cola-increases-for-dollar-limitations-on-benefits-and-contributions" target="_blank" rel="noopener">IRS COLA limits table</a>. Catch-up contributions are not eligible for employer match. This population is more likely than most to include "highly compensated employees" (a status that can restrict contribution testing), confirm HCE status with the plan administrator for high earners.</p>
+  <p class="small">Figures shown are for <strong>2026</strong> and are adjusted for inflation every year. Confirm the current-year numbers at <a class="inline" href="https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-401k-and-profit-sharing-plan-contribution-limits" target="_blank" rel="noopener">irs.gov: 401(k) contribution limits</a> and <a class="inline" href="https://www.irs.gov/retirement-plans/cola-increases-for-dollar-limitations-on-benefits-and-contributions" target="_blank" rel="noopener">IRS COLA limits table</a>. Catch-up contributions are not eligible for employer match. This population is more likely than most to include <strong>"highly compensated employees"</strong>, defined by the plan as earning more than <strong>$160,000 in 2026</strong> (indexed), a status that can limit how much a high earner is actually allowed to defer if plan testing requires it. Confirm HCE status with the plan administrator for high earners.</p>
 
   <h3>Employer match: same rate, different caps</h3>
   <p>Both Management formulas use the identical <strong>$0.75-per-dollar</strong> match rate, only the cap on matched pay differs:</p>
@@ -691,7 +718,11 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
   </div>
 
   <h3>Investing &amp; accessing the account</h3>
-  <p>The RSP offers three tiers: <strong>Target Date Funds</strong> (the default if no election is made, closest to the employee's 65th birthday), <strong>Core Funds</strong> (10 index-style options plus the PG&amp;E Corporation Stock Fund), and a <strong>Self-Directed Account</strong> (Fidelity BrokerageLink) for a broader universe of mutual funds. Loans are available up to the lesser of $50,000 or 50% of the vested Tier 1/Tier 2 balance, minus the highest outstanding loan balance in the prior 12 months.</p>
+  <p>The RSP offers three tiers: <strong>Tier 1 &mdash; Target Date Funds</strong> (11 funds; the default if no election is made, closest to the employee's 65th birthday, or the RSP Retirement Income Fund at 65+), <strong>Tier 2 &mdash; Core Funds</strong> (7 pre-screened, mostly low-fee index funds), and <strong>Tier 3 &mdash; a Self-Directed Account</strong> (Fidelity BrokerageLink, expanded on August 1, 2024 to include ETFs, ETNs, and closed-end funds). A separate <strong>20% cap</strong> limits how much of an account can be steered into the PG&amp;E Corporation Stock Fund. Loans are available up to the lesser of $50,000 or 50% of the vested Tier 1/Tier 2 balance, minus the highest outstanding loan balance in the prior 12 months.</p>
+  <div class="callout">
+    <span class="tag blue">Investment advice for clients</span>
+    <p>PG&amp;E offers free online advice and fee-based professional management through <strong>Edelman Financial Engines</strong> (EdelmanFinancialEngines.com/forpge). Clients age 60+ or within five years of retirement can add the <strong>Income+</strong> service, which can turn the 401(k) balance into managed monthly payouts. Useful to know so you can position your own advice relative to what PG&amp;E already provides.</p>
+  </div>
 </section>
 
 <section class="block" id="rmsa">
@@ -862,7 +893,9 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
     <dt>Special Joint Pension ("Pop-Up")</dt><dd>A joint pension that returns to the full single-life amount if the joint pensioner dies before the retiree.</dd>
     <dt>RMSA</dt><dd>Retiree Medical Savings Account. A PG&amp;E-funded account that reimburses a percentage of retiree medical premiums; no cash value.</dd>
     <dt>Postretirement Life Insurance</dt><dd>Automatic, company-paid life insurance for retirees; $8,000 base, or up to final-year base salary (capped at $50,000 for most) with 15+ years of service.</dd>
+    <dt>Roth 401(k) contribution</dt><dd>An after-tax contribution source added to the RSP effective Jan 1, 2026; qualified growth and withdrawals come out tax-free. Distinct from the "regular after-tax" bucket, where only the contributions (not the earnings) are tax-free.</dd>
     <dt>Spillover election</dt><dd>A 401(k) feature that automatically shifts contributions from pre-tax to after-tax once the annual pre-tax limit is reached, so employer match can continue.</dd>
+    <dt>Excess Plan</dt><dd>A PG&amp;E-paid, non-qualified benefit that pays (as a lump sum at retirement) the portion of a pension that exceeds IRS &sect;415/&sect;401(a)(17) limits. Unsecured; not PBGC-insured. Most common for highly paid Management/A&amp;T clients.</dd>
     <dt>PBGC</dt><dd>Pension Benefit Guaranty Corporation, the federal agency that insures pension benefits.</dd>
     <dt>QDRO</dt><dd>Qualified Domestic Relations Order, a court order that can divide pension benefits in a divorce.</dd>
     <dt>SPD</dt><dd>Summary Plan Description, the plain-language document describing a benefit plan's official terms.</dd>
@@ -879,21 +912,24 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
   <h2>Contacts &amp; sources</h2>
   <h4>For clients: administrators</h4>
   <div class="contacts">
-    <div class="contact"><div class="cn">PG&amp;E Pension Center (Xerox)</div><div class="cd">pgepensioncenter.com &middot; 800-700-0057<br>Mon&ndash;Fri, 7:30 a.m.&ndash;3:30 p.m. Pacific</div></div>
-    <div class="contact"><div class="cn">PG&amp;E Benefits Service Center</div><div class="cd">mypgebenefits.com &middot; 866-271-8144<br>Mon&ndash;Fri, 7:30 a.m.&ndash;5:00 p.m. Pacific</div></div>
-    <div class="contact"><div class="cn">HR Service Center</div><div class="cd">hrbenefitsquestions@exchange.pge.com<br>415-973-4357 or 800-788-2363</div></div>
-    <div class="contact"><div class="cn">Fidelity RSP Service Center (401k)</div><div class="cd">www.401k.com &middot; 877-PGE-401K (877-743-4015)</div></div>
-    <div class="contact"><div class="cn">PBGC</div><div class="cd">pbgc.gov &middot; 800-400-7242</div></div>
-    <div class="contact"><div class="cn">Social Security Administration</div><div class="cd">ssa.gov &middot; 800-772-1213</div></div>
+    <div class="contact"><div class="cn">PG&amp;E Pension Service Center (WTW)</div><div class="cd">PensionConnect: mypensionconnect.com &middot; 800-700-0057<br>Mon&ndash;Fri, 7:30 a.m.&ndash;5:00 p.m. Pacific</div></div>
+    <div class="contact"><div class="cn">PG&amp;E Benefits Service Center</div><div class="cd">mypgebenefits.com (myPlans Connect) &middot; 866-271-8144<br>Mon&ndash;Fri, 7:30 a.m.&ndash;5:00 p.m. Pacific</div></div>
+    <div class="contact"><div class="cn">Fidelity RSP Service Center (401k)</div><div class="cd">401k.com (NetBenefits) &middot; 877-PGE-401K (877-743-4015)</div></div>
+    <div class="contact"><div class="cn">Edelman Financial Engines (401k advice)</div><div class="cd">EdelmanFinancialEngines.com/forpge</div></div>
+    <div class="contact"><div class="cn">PG&amp;E QDRO Team (divorce)</div><div class="cd">WTWQDRO@willistowerswatson.com &middot; 800-700-0057</div></div>
+    <div class="contact"><div class="cn">PBGC &middot; Social Security</div><div class="cd">pbgc.gov &middot; 800-400-7242<br>ssa.gov &middot; 800-772-1213</div></div>
   </div>
 
+  <h4>Online benefit resources (PG&amp;E)</h4>
+  <p class="small">PG&amp;E publishes current plan summaries at <a class="inline" href="https://experience100.ehr.com/mypgebenefits/Home/Financial-Health/" target="_blank" rel="noopener">mypgebenefits.com &rarr; Financial Health</a>: the <a class="inline" href="https://experience100.ehr.com/mypgebenefits/Home/Financial-Health/Retirement/Pension" target="_blank" rel="noopener">Pension</a>, <a class="inline" href="https://experience100.ehr.com/mypgebenefits/Home/Financial-Health/Retirement/401-k-Retirement-Savings-Plan" target="_blank" rel="noopener">401(k) Retirement Savings Plan</a> (including the Roth Contribution details), and <a class="inline" href="https://experience100.ehr.com/mypgebenefits/Home/Financial-Health/Retirement/Postretirement-Life-Insurance" target="_blank" rel="noopener">Postretirement Life Insurance</a> pages. The controlling Summary of Benefits Handbook (SPD) lives at mypgebenefits.com/spd.</p>
+
   <h4>Source documents (project library)</h4>
-  <p class="small">PG&amp;E Summary of Benefits Handbook for eligible Management, Administrative &amp; Technical employees (2014 edition), covering the Retirement Plan, Retirement Savings Plan, Retiree Medical Coverage, and Postretirement Life Insurance. These SPDs are the controlling references; this guide summarizes them for training and does not reflect any Summaries of Material Modification issued after 2014. Federal figures (IRS contribution limits, IRMAA thresholds, Social Security wage base) are current as of 2026 and change annually.</p>
+  <p class="small">Built from PG&amp;E's current online plan summaries (Pension, 401(k) RSP, Postretirement Life Insurance, and Pension Quick Start Guide, retrieved July 2026) layered onto the 2014 Summary of Benefits Handbook for Management, Administrative &amp; Technical employees. The SPD and current plan documents control in any conflict. Federal figures (IRS contribution limits, IRMAA thresholds, Social Security wage base) are current as of 2026 and change annually; plan features noted as effective January 1, 2026 (the Roth source) reflect PG&amp;E's most recent published materials.</p>
 </section>
 
 <div class="foot">
   <div class="ftitle">PG&amp;E Retirement Benefits &middot; Advisor Field Guide</div>
-  <div>Built as an internal onboarding reference. Pair it with each client's Pension Center and Fidelity NetBenefits statements and the controlling SPD before advising.</div>
+  <div>Built as an internal onboarding reference. Pair it with each client's PG&amp;E PensionConnect and Fidelity NetBenefits statements and the controlling SPD before advising.</div>
   <div class="disc">
     This material is for educational and training use by wealth advisors. It is a simplified summary of complex plan provisions and is not legal, tax, or investment advice, nor a guarantee of any benefit. Plan terms are governed solely by the official plan documents and Summary Plan Descriptions, which control in any conflict. Benefit formulas, vesting schedules, match rates, RMSA credits, and dollar limits can change over time and this guide's source SPD dates to 2014; always verify a client's actual figures in Fidelity NetBenefits, the PG&amp;E Pension Center, and the current SPD before making recommendations. Calculator outputs are illustrative approximations only.
   </div>

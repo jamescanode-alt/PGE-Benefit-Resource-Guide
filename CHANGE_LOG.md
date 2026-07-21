@@ -1,5 +1,53 @@
 # CHANGE_LOG
 
+## 2026-07-21 — Refresh both guides against PG&E's current online plan summaries
+
+**Summary.** The user supplied PG&E's current benefit PDFs (401(k), Pension, Pension Quick Start,
+Your Pension Guide) plus the mypgebenefits.com resource URLs. Parsed them (Firecrawl `parse`,
+since PDF image rendering was unavailable) and updated both guides to match current plan terms.
+The headline change: the RSP now offers a **Roth contribution source effective January 1, 2026** —
+both guides previously said Roth was "unconfirmed / not offered," now corrected to a confirmed,
+prominent Roth callout.
+
+**Key content changes (both guides unless noted):**
+- **Roth 401(k):** replaced the "unconfirmed" warn callout with a confirmed "New for 2026" good
+  callout (three sources: pre-tax / Roth / regular after-tax) plus an advisor's-lens callout on
+  the career-stage Roth decision. Added Roth to the section intro line and a glossary entry.
+- **Union contribution cap 20% → 50%** (effective Jan 1, 2026), and removed the now-false
+  "wider than the union's 20% cap" phrasing from the management guide (both are 50% now).
+- **Mandatory cash-out confirmed at $5,000** (PG&E did NOT adopt the $7,000 SECURE 2.0 option);
+  removed the old "confirm which" hedge.
+- **New: Excess Plan callout** — PG&E-paid, non-qualified, unsecured, not-PBGC-insured top-up for
+  pensions exceeding IRS §415/§401(a)(17) limits. Framed for high-overtime union clients;
+  emphasized for the (higher-earning) management population, with the $360,000 2026 pay limit.
+- **New: PG&E's published 8-form sample payment table** ($4,236.26 single-life spread across all
+  joint/pop-up percentages) added to the payment-options section of both guides — real current
+  illustrative data replacing reliance on the synthetic SPD factor alone.
+- **Investing:** Core Funds corrected to **7** (was 11/10); BrokerageLink expansion to ETFs/ETNs/
+  closed-end funds (Aug 1, 2024); 20% PG&E-stock cap; added an **Edelman Financial Engines** /
+  Income+ advisory callout.
+- **Auto-enrollment** timing corrected to ~30 days after hire (union table), with match-eligibility
+  distinction spelled out.
+- **HCE threshold $160,000 (2026)** added to the management 401(k) section.
+- **Portal/administrator updates:** pension is now **PG&E PensionConnect (mypensionconnect.com),
+  administered by Willis Towers Watson (WTW)** — replaced all "Xerox" / "pgepensioncenter.com"
+  references (hero label, formula-check link, contacts, footer). Added QDRO team email
+  (WTWQDRO@willistowerswatson.com) and an "Online benefit resources" block linking the four
+  mypgebenefits.com pages the user provided.
+
+**Files.** `index.html`, `management.html`, `TODO.md` (resolved the Roth and cash-out items),
+`CHANGE_LOG.md`, `PLAN_LOG.md`.
+
+**Tests.** Local preview on both pages: confirmed Roth callout, 50% cap, sample table ($4,236.26),
+Excess Plan, PensionConnect, Edelman, 7 Core Funds, HCE $160k all render. Tag balance intact
+(index 186/186 div, 11/11 table, 15/15 section; management 189/189, 11/11, 15/15). No page-level
+horizontal overflow at 375px (tables scroll inside their wrappers). Grep confirmed zero remaining
+"Xerox / pgepensioncenter / unconfirmed / farther / focus team" references.
+
+**Sources.** PG&E current online summaries via mypgebenefits.com (retrieved July 2026):
+401(k) RSP, Pension, Pension Quick Start Guide, Your Pension Guide. The Roth detail is stated on
+the 401(k) page ("Starting January 1, 2026, PG&E will offer a Roth contribution option…").
+
 ## 2026-07-20 (3) — Named client examples added throughout both guides
 
 **Summary.** Added a "Client example" callout to every substantive section of both guides (up
