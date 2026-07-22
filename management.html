@@ -98,13 +98,24 @@ em{color:var(--ink-soft)}
 .hero .meta .k{font-size:10.5px;letter-spacing:2px;color:#8fb0d6;text-transform:uppercase}
 .hero .meta .v{font-size:15px;color:#fff;margin-top:3px}
 
-/* ---------- Callouts ---------- */
+/* ---------- Callouts ----------
+   Standard callout taxonomy (keep consistent across the guide):
+   - Worked Example ...... <div class="callout">        + <span class="tag blue">   (blue)
+   - Client Example ...... <div class="callout client">  + <span class="tag">        (violet)
+   - The Advisor's Lens .. <div class="lens">            + <span class="tag">        (dark ink)
+   - New for 2026 ........ <div class="callout good">     + <span class="tag">        (green)
+   - Key Point ........... <div class="callout gold">     + <span class="tag">        (gold)
+   - Caution ............. <div class="callout warn">     + <span class="tag">        (orange)
+   - Reference note ...... <div class="callout note">     + <span class="tag">        (slate)
+*/
 .callout{border-left:4px solid var(--blue);background:var(--paper);padding:18px 22px;margin:22px 0;border-radius:0 6px 6px 0}
 .callout.gold{border-left-color:var(--gold);background:#fbf6ea}
 .callout.warn{border-left-color:var(--warn);background:#fbf0ea}
 .callout.good{border-left-color:var(--good);background:#eef6f1}
 .callout.client{border-left-color:var(--client);background:#f2ecf8}
 .callout.client .tag{color:var(--client)}
+.callout.note{border-left-color:var(--ink-soft);background:#eef1f6}
+.callout.note .tag{color:var(--ink-soft)}
 .callout .tag{font-family:'Helvetica Neue',Arial,sans-serif;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:6px;display:block}
 .callout.gold .tag{color:var(--gold)}
 .callout .tag.blue{color:var(--blue)}
@@ -339,8 +350,8 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
 
   <h3>Who is covered</h3>
   <p>This guide applies to <strong>Management and Administrative &amp; Technical (A&amp;T) employees</strong> of Pacific Gas and Electric Company, PG&amp;E Corporation, or a participating affiliate, non-union roles. Crediting of service generally begins on the employee's hire date (April 1, 2007 or later hires); employees hired directly before that date began accruing credited service as of April 1, 2007.</p>
-  <div class="callout">
-    <span class="tag blue">Union transfers</span>
+  <div class="callout note">
+    <span class="tag">Union transfers</span>
     <p>PG&amp;E's Retirement Plan has two parts: <strong>Part 1</strong> covers Management/A&amp;T employees (this guide) and <strong>Part 2</strong> covers union-represented employees. A client who transfers between a Management role and a union-represented role earns a blended benefit, see Section 13.</p>
   </div>
 
@@ -434,7 +445,7 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
   <p class="lead">This is where advisors add the most value on the Final Average Pay Pension. Retiring before age 65 usually cuts the monthly benefit, unless the client has enough service to avoid it entirely.</p>
 
   <p>Early retirement is available starting at <strong>age 55</strong> (there's no minimum service requirement to retire early, just to avoid the reduction).</p>
-  <div class="callout good">
+  <div class="callout gold">
     <span class="tag">The 35-year exemption</span>
     <p>A Management/A&amp;T client with <strong>35 or more years of credited service</strong> gets their full, unreduced Final Average Pay Pension at <em>any</em> retirement age from 55 to 65. Note this threshold is <strong>higher than the union plan's 30-year threshold</strong>, don't assume the two populations work the same way.</p>
   </div>
@@ -504,8 +515,8 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
   <h3>Interest credits</h3>
   <p>Each calendar quarter, the account also earns interest on its balance. The rate is the <strong>average of the 30-year U.S. Treasury bond yield</strong> for the three months before that quarter (published by the IRS), with a floor of 0.4875% per quarter (about 1.95% per year). See <a class="inline" href="https://www.irs.gov/retirement-plans/weighted-average-interest-rate-table" target="_blank" rel="noopener">irs.gov: weighted average interest rate table</a> for the published monthly rates.</p>
 
-  <div class="callout gold">
-    <span class="tag">How an account grows over time (from the SPD)</span>
+  <div class="callout">
+    <span class="tag blue">How an account grows over time (from the SPD)</span>
     <p>Sam is age 45 with 10 years of service, earning $90,000/year (3% annual raises). Starting from a $0 balance:</p>
     <div class="table-wrap"><table style="margin-top:10px">
       <thead><tr><th>Year</th><th>Points</th><th>Pay credit rate</th><th>Ending balance</th></tr></thead>
@@ -523,7 +534,7 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
     <p>Priya, hired in 2017, is now 43 with 9 years of service: 43 + 9 = <strong>52 points</strong>, the 50&ndash;59 band, a <strong>7% pay credit</strong>. On her $135,000 covered pay this year, that's $135,000 &times; 7% = <strong>$9,450</strong> added to her account before interest, mechanically identical to how a union Cash Balance client's account would grow at the same points.</p>
   </div>
 
-  <div class="callout good">
+  <div class="callout gold">
     <span class="tag">Enhanced 401(k) match</span>
     <p>Employees earning a Cash Balance Pension are eligible for a <strong>richer employer 401(k) match</strong> than Final Average Pay Pension participants, $0.75 per dollar contributed, up to 8% of pay. See Section 09.</p>
   </div>
@@ -609,7 +620,8 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
     <p>If the client is <strong>married</strong> when payments begin, federal law requires the default to be at least a <strong>50% joint pension</strong> with the spouse (a "Marital Pension"). Electing anything else, including single life or a joint pension with someone other than the spouse, requires the spouse's <strong>written, notarized consent</strong>. If unmarried, the default is single life. IRS rules may also limit the joint-pension benefit payable to a non-spouse joint pensioner who is more than 10 years younger.</p>
   </div>
 
-  <h4>Worked example: 50% joint pension (from the SPD)</h4>
+  <div class="callout">
+    <span class="tag blue">Worked example: 50% joint pension (from the SPD)</span>
   <p>Employee is age 65; joint pensioner is age 62. Basic monthly pension is $2,448 (the Section 04 worked example). Because the joint pensioner is younger and likely to receive payments longer, an actuarial factor reduces the benefit:</p>
   <div class="table-wrap"><table>
     <thead><tr><th></th><th>Amount</th></tr></thead>
@@ -619,8 +631,10 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
     </tbody>
   </table></div>
   <p class="small">The "Pop-Up" version of this election would cost a bit more than $2,318.26 up front, but if the joint pensioner dies before the employee, the employee's payment would jump back up to the full $2,448 for the rest of their life.</p>
+  </div>
 
-  <h4>PG&amp;E's published sample: all eight forms side by side</h4>
+  <div class="callout">
+    <span class="tag blue">PG&amp;E's published sample: all eight forms side by side</span>
   <p>PG&amp;E's current pension materials publish this sample spread (the actuarial reduction factors work the same way for the final average pay annuity; figures are illustrative only and depend on each client's own and their beneficiary's ages):</p>
   <div class="table-wrap"><table>
     <thead><tr><th>Form of payment</th><th>To you</th><th>To your beneficiary</th></tr></thead>
@@ -637,6 +651,7 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
     </tbody>
   </table></div>
   <p class="small">Read across: the more a client protects a survivor (higher %), and the pop-up feature on top of that, the more the retiree's own monthly check is reduced. Each pop-up row pays the retiree slightly less than the plain joint row at the same percentage, that gap is the cost of the pop-up guarantee.</p>
+  </div>
 
   <div class="callout client">
     <span class="tag">Client example: Karen Whitfield</span>
@@ -667,7 +682,7 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
     <p>Starting <strong>January 1, 2026</strong>, the RSP adds a <strong>Roth contribution option</strong>, a genuinely new feature (earlier plan documents did not offer one). Clients can now split contributions across <strong>three sources</strong>: <strong>pre-tax</strong>, <strong>Roth</strong> (after-tax dollars in, tax-free qualified growth and withdrawals out), and <strong>regular after-tax</strong> (the mega-backdoor bucket). Any mix is allowed, as long as total contributions stay within the IRS annual limits.</p>
     <p style="margin-top:8px">This matters especially for this higher-earning population because of a SECURE 2.0 mandate landing the same year: anyone who earned <strong>more than $150,000</strong> in the prior year must make their age-50+ catch-up contributions as <strong>Roth</strong>. Many Management/A&amp;T clients clear that wage line, and the new Roth source is what lets them comply.</p>
   </div>
-  <div class="callout gold">
+  <div class="lens">
     <span class="tag">The advisor's lens: Roth for high earners</span>
     <p>A senior Management client at the top of the wage scale is often in a high bracket <em>now</em>, so pre-tax deferral usually wins for the bulk of contributions. But the new direct Roth source is still valuable: it's the compliance path for mandatory Roth catch-ups, and it lets clients deliberately build a tax-free bucket for retirement-year MAGI control (IRMAA, Section 11) without routing through after-tax conversions. Tax diversification, some pre-tax and some Roth, gives the most flexibility.</p>
   </div>
@@ -726,8 +741,8 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
 
   <h3>Investing &amp; accessing the account</h3>
   <p>The RSP offers three tiers: <strong>Tier 1 &mdash; Target Date Funds</strong> (11 funds; the default if no election is made, closest to the employee's 65th birthday, or the RSP Retirement Income Fund at 65+), <strong>Tier 2 &mdash; Core Funds</strong> (7 pre-screened, mostly low-fee index funds), and <strong>Tier 3 &mdash; a Self-Directed Account</strong> (Fidelity BrokerageLink, expanded on August 1, 2024 to include ETFs, ETNs, and closed-end funds). A separate <strong>20% cap</strong> limits how much of an account can be steered into the PG&amp;E Corporation Stock Fund. Loans are available up to the lesser of $50,000 or 50% of the vested Tier 1/Tier 2 balance, minus the highest outstanding loan balance in the prior 12 months.</p>
-  <div class="callout">
-    <span class="tag blue">Investment advice for clients</span>
+  <div class="callout note">
+    <span class="tag">Investment advice for clients</span>
     <p>PG&amp;E offers free online advice and fee-based professional management through <strong>Edelman Financial Engines</strong> (EdelmanFinancialEngines.com/forpge). Clients age 60+ or within five years of retirement can add the <strong>Income+</strong> service, which can turn the 401(k) balance into managed monthly payouts. Useful to know so you can position your own advice relative to what PG&amp;E already provides.</p>
   </div>
 </section>
@@ -752,7 +767,7 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
     <div class="fop">+</div>
     <div class="fbox" style="background:var(--ink)"><span class="ft">From age 46</span><span class="fv">4.5% interest, compounded annually</span></div>
   </div>
-  <div class="callout good">
+  <div class="callout gold">
     <span class="tag">A separate account for spouses, too</span>
     <p>A married employee's spouse or registered domestic partner gets a <strong>parallel RMSA</strong> that grows the same way, $5,000 for every year the employee works at PG&amp;E starting the year the employee turns 45, plus 4.5% interest starting the year the employee turns 46. The spouse's account does <em>not</em> get the $1,000/year service bonus or the $7,500 lump sum; those are employee-only. In a household where both spouses work at PG&amp;E, only <strong>one</strong> RMSA per employee is allowed, a retiree RMSA or a spousal RMSA, not both.</p>
   </div>
