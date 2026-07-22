@@ -19,6 +19,7 @@
   --paper:#FDFCF6;
   --good:#2E7D52;
   --warn:#B5532A;
+  --client:#6E4B9E;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -102,6 +103,8 @@ em{color:var(--ink-soft)}
 .callout.gold{border-left-color:var(--gold);background:#fbf6ea}
 .callout.warn{border-left-color:var(--warn);background:#fbf0ea}
 .callout.good{border-left-color:var(--good);background:#eef6f1}
+.callout.client{border-left-color:var(--client);background:#f2ecf8}
+.callout.client .tag{color:var(--client)}
 .callout .tag{font-family:'Helvetica Neue',Arial,sans-serif;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:6px;display:block}
 .callout.gold .tag{color:var(--gold)}
 .callout .tag.blue{color:var(--blue)}
@@ -352,8 +355,8 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
     </tbody>
   </table></div>
   <p class="small">If a client earns a benefit under <em>both</em> formulas (see Section 03), 3 years of combined service vests both. No employee contributions are required for either formula, PG&amp;E pays the full cost.</p>
-  <div class="callout">
-    <span class="tag blue">Client example</span>
+  <div class="callout client">
+    <span class="tag">Client example</span>
     <p><strong>Karen Whitfield</strong> was hired into a Management role in 2005. By 2010 she had 5 years of service, fully vesting her Final Average Pay Pension years before the 2013 Cash Balance election existed. We'll follow Karen's numbers through the rest of this guide.</p>
   </div>
   <div class="callout warn">
@@ -387,8 +390,8 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
     <p>Ask every client: <strong>"What year were you hired at PG&amp;E?"</strong> and <strong>"Were you employed on December 31, 2012?"</strong> Employees hired before 2013 were automatically enrolled in the Final Average Pay Pension. PG&amp;E offered those employees a <strong>one-time election in 2013</strong> to switch to the Cash Balance Pension instead. If a client switched, their Final Average Pay benefit was frozen as of December 31, 2013 (based on pay and service through that date), and their Cash Balance account started growing from January 1, 2014 onward, meaning some long-tenured clients have <strong>both</strong> a small frozen Final Average Pay benefit and a growing Cash Balance account.</p>
   </div>
   <p class="small">Clients can check which formula applies, and run a real pension estimate ("Estimate My Pension Benefit"), at PG&amp;E PensionConnect: <a class="inline" href="https://www.mypensionconnect.com" target="_blank" rel="noopener">mypensionconnect.com</a>.</p>
-  <div class="callout">
-    <span class="tag blue">Client example</span>
+  <div class="callout client">
+    <span class="tag">Client example</span>
     <p><strong>Karen Whitfield</strong> was hired in 2005, before the cutoff, and stayed on the <strong>Final Average Pay Pension only</strong>. Compare that to <strong>Priya Nair</strong>, hired in 2017: she has a <strong>Cash Balance Pension only</strong>. Same job level, same employer, two different formulas, purely because of hire date.</p>
   </div>
 </section>
@@ -414,7 +417,7 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
     <p>An employee retires at 65 with 30 years of credited service. Average Basic Monthly Salary over the final 36 months (using rising salary of $4,500&rarr;$4,700&rarr;$4,900&rarr;$5,100 across the period) works out to <strong>$4,800</strong>.</p>
     <p style="margin-top:8px">Basic Monthly Pension Benefit = $4,800 &times; 30 years &times; 1.7% = <strong>$2,448 per month</strong>, payable for life as a single life annuity.</p>
   </div>
-  <div class="callout good">
+  <div class="callout client">
     <span class="tag">Client example: Karen Whitfield</span>
     <p>Karen plans to work to 65 with 28 years of credited service, and her Average Basic Monthly Salary over her final 36 months comes to <strong>$9,500</strong>. Basic Monthly Pension Benefit = $9,500 &times; 28 &times; 1.7% = <strong>$4,522.00/month</strong> at normal retirement, unreduced. Notice there's no formula step-up like the union plan's 25-year break, it's a flat 1.7% no matter how many years she has.</p>
   </div>
@@ -467,7 +470,7 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
       </tbody>
     </table></div>
   </div>
-  <div class="callout good">
+  <div class="callout client">
     <span class="tag">Client example: Karen Whitfield</span>
     <p>Suppose Karen retires at <strong>58</strong> with <strong>32 years</strong> of service instead of waiting to 65 with 28 (Section 04). Full accrual at 32 years = $9,500 &times; 32 &times; 1.7% = <strong>$5,168.00</strong>. At age 58 with 32 years, she's in the "30&ndash;34 yrs" column, a <strong>9%</strong> reduction: $5,168.00 &times; (1 &minus; 0.09) = <strong>$4,702.88/month</strong>.</p>
     <p style="margin-top:8px">Here's the trap: if Karen were a <em>union</em> employee with those same 32 years at 58, she'd already be past the union table's 30-year exemption and get the <strong>full, unreduced</strong> $5,168.00. Because she's Management, she's still short of the 35-year threshold and loses <strong>$465.12/month</strong> she wouldn't have lost under the other guide's rules.</p>
@@ -515,8 +518,8 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
     <p class="small" style="margin-top:8px">The pay credit rate steps up as points cross each band, and interest compounds on the growing balance, so the account accelerates over time.</p>
   </div>
 
-  <div class="callout">
-    <span class="tag blue">Client example: Priya Nair</span>
+  <div class="callout client">
+    <span class="tag">Client example: Priya Nair</span>
     <p>Priya, hired in 2017, is now 43 with 9 years of service: 43 + 9 = <strong>52 points</strong>, the 50&ndash;59 band, a <strong>7% pay credit</strong>. On her $135,000 covered pay this year, that's $135,000 &times; 7% = <strong>$9,450</strong> added to her account before interest, mechanically identical to how a union Cash Balance client's account would grow at the same points.</p>
   </div>
 
@@ -557,7 +560,7 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
     <div class="note" id="calcNote"></div>
   </div>
 
-  <div class="callout good">
+  <div class="callout client">
     <span class="tag">Client example</span>
     <p>Try it yourself: enter <strong>Final Average Pay Pension, age 58, 32 years</strong> and you'll reproduce Karen's 9% reduction from Section 05, then compare that to entering <strong>30 years</strong> instead, still a 9% reduction, since Management doesn't hit full exemption until 35. Switch to <strong>Cash Balance</strong> and enter Priya's <strong>9 years</strong> at any age, the reduction disappears entirely.</p>
   </div>
@@ -635,7 +638,7 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
   </table></div>
   <p class="small">Read across: the more a client protects a survivor (higher %), and the pop-up feature on top of that, the more the retiree's own monthly check is reduced. Each pop-up row pays the retiree slightly less than the plain joint row at the same percentage, that gap is the cost of the pop-up guarantee.</p>
 
-  <div class="callout good">
+  <div class="callout client">
     <span class="tag">Client example: Karen Whitfield</span>
     <p>Karen retires at 65 with the $4,522.00/month benefit from Section 04. Her husband is also 62, matching the SPD example's ages, so the same <strong>0.947</strong> factor applies: $4,522.00 &times; 0.947 = <strong>$4,282.33/month</strong> to Karen, with her husband continuing to receive 50% of that, <strong>$2,141.17/month</strong>, if she dies first. Electing Single Life instead would pay her the full $4,522.00, with nothing continuing to him.</p>
   </div>
@@ -708,7 +711,7 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
     <span class="tag blue">Worked example</span>
     <p>A Cash Balance participant earning $150,000/year contributes 8% of pay: $12,000/year. The employer match is $0.75 &times; $12,000 = <strong>$9,000/year</strong>, an immediate, guaranteed 75% return on that contribution. Contributing less than 8% leaves part of that match unclaimed.</p>
   </div>
-  <div class="callout good">
+  <div class="callout client">
     <span class="tag">Client example: Karen Whitfield</span>
     <p>Karen is a Final Average Pay participant earning roughly $114,000/year. To capture the full match, she needs to contribute 6% of pay: $114,000 &times; 6% = $6,840/year. Her employer match = $0.75 &times; $6,840 = <strong>$5,130/year</strong>. If she contributed 8% like a Cash Balance participant would, the extra 2% ($2,280) would earn <strong>no additional match</strong>, her formula's cap stops at 6%, not 8%.</p>
   </div>
@@ -759,7 +762,7 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
     <p>Joe was hired at PG&amp;E in 1981 at age 30 and retires June 1, 2013 at age 62, with 32 years of service. From the year he turns 45 (1996) through retirement, his account receives $5,000/year plus 4.5% interest starting at 46. At retirement, PG&amp;E adds a <strong>$7,500 lump sum</strong> (25+ years of service) and <strong>$17,000</strong> (17 years beyond the 15-year threshold &times; $1,000). Joe's starting balance at retirement: <strong>$153,208.55</strong>. His wife Jane, who does not work at PG&amp;E, receives her own parallel account (just the $5,000/year plus interest, no service bonuses) worth roughly <strong>$128,708.55</strong> at the same date.</p>
   </div>
 
-  <div class="callout good">
+  <div class="callout client">
     <span class="tag">Client example: Karen Whitfield</span>
     <p>Karen retires at 62 with 25 years of service, having earned credits since 45 (17 years of $5,000 credits): $5,000 &times; 17 = <strong>$85,000</strong>. At retirement she also gets $1,000 &times; (25 &minus; 15) = <strong>$10,000</strong> in service bonus, plus the maximum <strong>$7,500</strong> lump sum (25 years hits the top of the proration range). That's <strong>$102,500</strong> before compounding, 4.5% annual interest since age 46 adds substantially more on top, the same mechanism that grew Joe's example above from simple credits to over $153,000.</p>
   </div>
@@ -809,7 +812,7 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
     <li><strong>Imputed income from Postretirement Life Insurance</strong> over $50,000 &mdash; taxable as ordinary income each year, a smaller but easily-missed MAGI add for tenured Management retirees</li>
   </ul>
 
-  <div class="callout good">
+  <div class="callout client">
     <span class="tag">Client example: Karen Whitfield</span>
     <p>Karen's joint-pension income is $4,282.33/month (Section 08), $51,387.96/year, comfortably under the $109,000 single threshold on its own. But suppose in one year she also takes a $65,000 lump-sum Cash Balance rollover distribution instead of a direct rollover: her MAGI for that year hits <strong>$116,387.96</strong>, about $7,388 over the line. That triggers the full first-tier IRMAA surcharge on both Part B and Part D for the following two premium years, an easily avoidable outcome if the distribution had been a direct trustee-to-trustee rollover instead (Section 12).</p>
   </div>
@@ -842,7 +845,7 @@ hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
     <span class="tag">First-meeting question set</span>
     <p>What year were you hired at PG&amp;E, and were you employed on 12/31/2012? Did you make an election during the 2013 Cash Balance choice window? Were you ever promoted into Management, and if so, when? Current age and years of service? Target retirement age? Married, and what's your spouse's own coverage and income? What other savings and Social Security expectations do you have? These answers drive every recommendation above.</p>
   </div>
-  <div class="callout good">
+  <div class="callout client">
     <span class="tag">Client example: Karen Whitfield, the full picture</span>
     <p>Putting it together (using two illustrative service scenarios from earlier sections): a client like Karen weighing an earlier exit with a shorter career, say 58 with 32 years ($4,702.88/month, still reduced 9% under the Management-only 30&ndash;34 band, Section 05), against working to 65 with 28 years in a longer, later-starting career ($4,522.00/month, unreduced, Section 04), needs both the service-years and the age-based reduction modeled together, not just one or the other. Staying longer in any scenario also grows the RMSA past the $102,500 base and locks in the salary-capped $50,000 life insurance benefit (Section 10), and keeps the 401(k) match flowing at 6% ($5,130/year on Karen's pay, Section 09). If she retires at 65 and elects the 50% joint pension, she and her husband land at $4,282.33/month with survivor protection (Section 08), and taking a lump-sum distribution instead of a direct rollover in the same year could trigger an IRMAA surcharge (Section 11). Five decisions, hire-date formula, retirement age and service, survivor election, 401(k) rate, and rollover method, that only make sense evaluated together.</p>
   </div>
